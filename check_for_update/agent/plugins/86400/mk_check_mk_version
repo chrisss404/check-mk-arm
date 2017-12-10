@@ -1,0 +1,24 @@
+#!/usr/bin/python
+# -*- encoding: utf-8; py-indent-offset: 4 -*-
+
+import json
+import requests
+
+
+def get_latest_arm_release():
+    response = requests.get('https://api.github.com/repos/chrisss404/check-mk-arm/releases/latest')
+    last_release = json.loads(response.text)
+    return last_release['tag_name']
+
+
+def is_version_up_to_date(version):
+    response = requests.get('http://mathias-kettner.com/check_mk_download_source.html')
+    if '<h2>Check_MK %s</h2>' % version in response.text:
+        return True
+    else:
+        return False
+
+
+latest_version = get_latest_arm_release()
+print('<<<check_mk_version>>>')
+print('%s %s' % (latest_version, '0' if is_version_up_to_date(latest_version) else '1'))

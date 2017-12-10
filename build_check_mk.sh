@@ -28,7 +28,7 @@ ln -s arm_v6-linux packages/snap7/snap7-full-${SNAP7_VERSION}/build/bin/armv6l-l
 tar czf packages/snap7/snap7-full-${SNAP7_VERSION}.tar.gz -C packages/snap7 snap7-full-${SNAP7_VERSION}
 
 # compile and package
-make deb EDITION=raw DEBFULLNAME=Christian Hofer DEBEMAIL=chrisss404@gmail.com
+make deb EDITION=raw DEBFULLNAME="Christian Hofer" DEBEMAIL=chrisss404@gmail.com
 
 # cleanup
 cd ..

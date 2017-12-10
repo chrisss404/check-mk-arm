@@ -1,0 +1,33 @@
+#!/usr/bin/python
+# -*- encoding: utf-8; py-indent-offset: 4 -*-
+
+
+def check_mk_version_valid_info(info):
+    return info is not None and len(info) == 1 and len(info[0]) == 2
+
+
+def inventory_check_mk_version(info):
+    if check_mk_version_valid_info(info):
+        yield None, {}
+
+
+def check_check_mk_version(_no_item, params, info):
+    if not check_mk_version_valid_info(info):
+        return
+
+    version, up_to_date = info[0]
+
+    state = 0
+    details = 'Check_MK %s is up to date' % version
+    if up_to_date is '0':
+        state = 1
+        details = 'There is an update for Check_MK %s' % version
+
+    return state, details
+
+
+check_info['check_mk_version'] = {
+    'inventory_function'      : inventory_check_mk_version,
+    'check_function'          : check_check_mk_version,
+    'service_description'     : 'Check_MK ARM Version',
+}
