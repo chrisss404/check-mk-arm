@@ -1,5 +1,5 @@
 
-## Check_MK ARM Build for RaspberryPI
+## Check_MK for RaspberryPi
 
 This build is tested on Raspberry Pi 1 and 3, even though it runs on the first edition, it is not recommended. Use the third edition for a decent user experience. 
 
@@ -8,7 +8,9 @@ This build is tested on Raspberry Pi 1 and 3, even though it runs on the first e
     dpkg -i check-mk-raw-1.4.0p19_0.stretch_armhf.deb
     apt-get install -f
 
-### Build New Version
+![Check_MK](https://raw.github.com/chrisss404/check-mk-arm/master/check_mk.jpg)
+
+### Build
 
     bash build_check_mk.sh 1.4.0p19
 
