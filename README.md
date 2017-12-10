@@ -8,7 +8,7 @@ This build is tested on Raspberry Pi 1 and 3, even though it runs on the first e
     dpkg -i check-mk-raw-1.4.0p19_0.stretch_armhf.deb
     apt-get install -f
 
-![Check_MK](https://raw.github.com/chrisss404/check-mk-arm/master/check_mk.jpg)
+![Check_MK](https://raw.github.com/chrisss404/check-mk-arm/master/data/check_mk.jpg)
 
 ### Build
 
