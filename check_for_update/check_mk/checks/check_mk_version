@@ -11,17 +11,15 @@ def inventory_check_mk_version(info):
         yield None, {}
 
 
-def check_check_mk_version(_no_item, params, info):
+def check_check_mk_version(_no_item, _no_params, info):
     if not check_mk_version_valid_info(info):
         return
 
     version, up_to_date = info[0]
-
-    state = 0
-    details = 'Check_MK %s is up to date' % version
-    if up_to_date is '0':
-        state = 1
-        details = 'There is an update for Check_MK %s' % version
+    state = int(up_to_date)
+    details = 'Check_MK %s is the latest version' % version
+    if state > 0:
+        details = 'Check_MK %s is no longer the latest version' % version
 
     return state, details
 
@@ -29,5 +27,5 @@ def check_check_mk_version(_no_item, params, info):
 check_info['check_mk_version'] = {
     'inventory_function'      : inventory_check_mk_version,
     'check_function'          : check_check_mk_version,
-    'service_description'     : 'Check_MK ARM Version',
+    'service_description'     : 'Check_MK Version',
 }
