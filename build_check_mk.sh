@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.4.0p21"
+VERSION="1.4.0p34"
 SNAP7_VERSION="1.3.0"
 
 if [ $# -gt 0 ]; then
@@ -30,6 +30,8 @@ tar czf packages/mk-livestatus/mk-livestatus-${VERSION}.tar.gz -C packages/mk-li
 tar -xvzf packages/snap7/snap7-full-${SNAP7_VERSION}.tar.gz -C packages/snap7
 cp packages/snap7/snap7-full-${SNAP7_VERSION}/build/unix/arm_v6_linux.mk packages/snap7/snap7-full-${SNAP7_VERSION}/build/unix/armv6l_linux.mk
 ln -s arm_v6-linux packages/snap7/snap7-full-${SNAP7_VERSION}/build/bin/armv6l-linux
+cp packages/snap7/snap7-full-${SNAP7_VERSION}/build/unix/arm_v7_linux.mk packages/snap7/snap7-full-${SNAP7_VERSION}/build/unix/armv7l_linux.mk
+ln -s arm_v7-linux packages/snap7/snap7-full-${SNAP7_VERSION}/build/bin/armv7l-linux
 tar czf packages/snap7/snap7-full-${SNAP7_VERSION}.tar.gz -C packages/snap7 snap7-full-${SNAP7_VERSION}
 
 # compile and package
