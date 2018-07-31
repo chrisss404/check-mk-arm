@@ -12,8 +12,8 @@ def get_latest_arm_release():
 
 
 def is_version_up_to_date(version):
-    response = requests.get('http://mathias-kettner.com/check_mk_download_source.html')
-    return '<h2>Check_MK %s</h2>' % version in response.text
+    response = requests.get('https://mathias-kettner.de/download.php')
+    return '>%s<' % version in response.text
 
 
 latest_version = get_latest_arm_release()
