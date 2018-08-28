@@ -5,14 +5,15 @@ This build is tested on Raspberry Pi 1 and 3, even though it runs on the first e
 
 ### Install Check_MK on Raspbian
 
-    dpkg -i check-mk-raw-1.4.0p34_0.stretch_armhf.deb
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/latest | grep browser_download_url | cut -d '"' -f 4)
+    dpkg -i check-mk-raw-1.4.0p*_0.stretch_armhf.deb
     apt-get install -f
 
 ![Check_MK](https://raw.github.com/chrisss404/check-mk-arm/master/data/check_mk.jpg)
 
 ### Build
 
-    bash build_check_mk.sh 1.4.0p34
+    bash build_check_mk.sh 1.4.0p35
 
 ### Create Patches
 
