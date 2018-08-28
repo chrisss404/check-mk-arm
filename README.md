@@ -6,10 +6,10 @@ This build is tested on Raspberry Pi 1 and 3, even though it runs on the first e
 ### Install Check_MK on Raspbian
 
     curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/latest | grep browser_download_url | cut -d '"' -f 4)
-    dpkg -i check-mk-raw-1.4.0p*_0.stretch_armhf.deb
+    dpkg -i check-mk-raw-*_armhf.deb
     apt-get install -f
 
-![Check_MK](https://raw.github.com/chrisss404/check-mk-arm/master/data/check_mk.jpg)
+![Check_MK](https://raw.github.com/chrisss404/check-mk-arm/1.4.0/data/check_mk.jpg)
 
 ### Build
 
