@@ -5,36 +5,29 @@ This build is tested on Raspberry Pi 1 and 3, even though it runs on the first e
 
 ### Install Check_MK on Raspbian
 
-    dpkg -i check-mk-raw-1.4.0p34_0.stretch_armhf.deb
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/latest | grep browser_download_url | cut -d '"' -f 4) 
+    dpkg -i check-mk-raw-*_armhf.deb
     apt-get install -f
 
-![Check_MK](https://raw.github.com/chrisss404/check-mk-arm/master/data/check_mk.jpg)
+![Check_MK](https://raw.github.com/chrisss404/check-mk-arm/master/data/check_mk.png)
 
 ### Build
 
-    bash build_check_mk.sh 1.4.0p34
+    bash build_check_mk.sh 1.5.0p2
 
 ### Create Patches
 
-#### Increase timeout for maximum extraction time
+#### Remove shared option from python build
 
-    cp packages/perl-modules/lib/BuildHelper.pm packages/perl-modules/lib/BuildHelper_v2.pm
-    vim packages/perl-modules/lib/BuildHelper_v2.pm
-    -    alarm(120); # single module should not take longer than 1 minute
-    +    alarm(1200); # single module should not take longer than 1 minute
-    diff -u packages/perl-modules/lib/BuildHelper.pm packages/perl-modules/lib/BuildHelper_v2.pm > ../BuildHelper.patch
+    cp omd/packages/python/Makefile omd/packages/python/Makefile_v2
+    vim omd/packages/python/Makefile_v2
+    -            --enable-shared \
+    diff -u omd/packages/python/Makefile omd/packages/python/Makefile_v2 > ../python-Makefile.patch
 
-#### Remove navicli, because of missing ARM support
+#### Disable optimization for python build
 
-    cp Makefile Makefile_v2
-    vim Makefile_v2
-    -	 navicli \
-    diff -u Makefile Makefile_v2 > ../Makefile.patch
-
-#### Add ssl compatibility headers
-
-    cp packages/nrpe/Makefile packages/nrpe/Makefile_v2
-    vim packages/nrpe/Makefile_v2
-    -        cd $(DIR) ; ./configure $(CONFIGUREOPTS)
-    +        cd $(DIR) ; ./configure $(CONFIGUREOPTS) ; echo "#include \"../../libssl_compat.h\"" > temp.h ; cat include/dh.h >> temp.h ; mv temp.h include/dh.h
-    diff -u packages/nrpe/Makefile packages/nrpe/Makefile_v2 > ../nrpe-Makefile.patch
+    cp omd/packages/python/Makefile omd/packages/python/Makefile_v2
+    vim omd/packages/python/Makefile_v2
+    -            OPTI="--enable-optimizations" ; \
+    +            OPTI="" ; \
+    diff -u omd/packages/python/Makefile omd/packages/python/Makefile_v2 > ../python-Makefile-disable-optimization.patch

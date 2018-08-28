@@ -1,0 +1,11 @@
+--- omd/packages/python/Makefile	2018-08-14 14:28:28.000000000 +0200
++++ omd/packages/python/Makefile_v2	2018-08-26 09:46:34.453794588 +0200
+@@ -22,7 +22,7 @@
+ # help. Therefore we use just -j2.
+ 	@PATH="$(abspath bin):$$PATH" ; \
+ 	if  gcc -Xlinker --help | grep -q -e "-plugin" ; then \
+-	    OPTI="--enable-optimizations" ; \
++	    OPTI="" ; \
+ 	else \
+ 	    OPTI="" ; \
+ 	fi ; \

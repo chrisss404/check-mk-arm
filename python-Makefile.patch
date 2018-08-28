@@ -1,0 +1,10 @@
+--- omd/packages/python/Makefile	2018-08-14 14:28:28.000000000 +0200
++++ omd/packages/python/Makefile_v2	2018-08-26 09:48:52.157715891 +0200
+@@ -30,7 +30,6 @@
+ 	test "$(DISTRO_NAME)" = "SLES" && sed -i 's,#include <panel.h>,#include <ncurses/panel.h>,' Modules/_curses_panel.c ; \
+ 	./configure \
+ 	    --prefix="" \
+-	    --enable-shared \
+ 	    --enable-unicode=ucs4 \
+ 	    $$OPTI \
+ 	    LDFLAGS="-Wl,--rpath,$(OMD_ROOT)/lib" ; \
