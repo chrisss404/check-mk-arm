@@ -30,7 +30,6 @@ cd check-mk-raw-${VERSION}.cre
 if [ ${FAST_BUILD} -eq 1 ]; then
     patch -p0 < ../python-Makefile-disable-optimization.patch
 fi
-patch -p0 < ../python-Makefile.patch
 
 # prepare snap7
 tar -xvzf omd/packages/snap7/snap7-full-${SNAP7_VERSION}.tar.gz -C omd/packages/snap7

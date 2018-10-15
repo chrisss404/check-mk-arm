@@ -17,13 +17,6 @@ This build is tested on Raspberry Pi 1 and 3, even though it runs on the first e
 
 ### Create Patches
 
-#### Remove shared option from python build
-
-    cp omd/packages/python/Makefile omd/packages/python/Makefile_v2
-    vim omd/packages/python/Makefile_v2
-    -            --enable-shared \
-    diff -u omd/packages/python/Makefile omd/packages/python/Makefile_v2 > ../python-Makefile.patch
-
 #### Disable optimization for python build
 
     cp omd/packages/python/Makefile omd/packages/python/Makefile_v2
