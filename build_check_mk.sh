@@ -10,18 +10,27 @@ fi
 
 echo "building Check_MK ${VERSION}..."
 
-# Get compiler with support for C++17 language features
-if [ ! -d "/opt/gcc-8.1.0" ] ; then
-    wget -qO- https://bitbucket.org/sol_prog/raspberry-pi-gcc-binary/raw/bad4e5d14042cdad8f081119e5808fa3798217f6/gcc-8.1.0.tar.bz2?at=master | tar jx
-    mv gcc-8.1.0 /opt
-    update-alternatives --install /usr/bin/gcc gcc /opt/gcc-8.1.0/bin/gcc-8.1.0 10
-    update-alternatives --install /usr/bin/g++ g++ /opt/gcc-8.1.0/bin/g++-8.1.0 10
+# Check for recommended compiler
+if ! gcc --version | grep -q 7.3.0; then
+    echo ""
+    echo "================================================================================"
+    echo "=              Could not find recommended compiler version 7.3.0.              ="
+    echo "=                                                                              ="
+    echo "=                  Run \`bash build_gcc.sh 7.3.0\` to build it.                  ="
+    echo "=                                                                              ="
+    echo "=  If you wish to proceed with your current compiler, just wait for a minute.  ="
+    echo "================================================================================"
+    echo ""
+    sleep 1m
 fi
-update-alternatives --set gcc /opt/gcc-8.1.0/bin/gcc-8.1.0
-update-alternatives --set g++ /opt/gcc-8.1.0/bin/g++-8.1.0
 
 # get check_mk sources and build dependencies
-apt-get -y install git make debhelper flex build-essential libssl1.0-dev libboost-dev libboost-all-dev libncurses5-dev libgd-dev libglib2.0-dev libgnutls28-dev default-libmysqlclient-dev libpango1.0-dev libperl-dev libxml2-dev libsqlite3-dev uuid-dev apache2-dev libpcap-dev libgsf-1-dev libkrb5-dev tk-dev
+apt-get -y install apache2 build-essential debhelper dnsutils dpatch flex fping git git-buildpackage make rpcbind \
+    rrdtool smbclient snmp apache2-dev default-libmysqlclient-dev dietlibc-dev libboost-all-dev libboost-dev \
+    libcloog-ppl1 libcurl4-openssl-dev libdbi-dev libevent-dev libffi-dev libfreeradius-dev libgd-dev libglib2.0-dev \
+    libgnutls28-dev libgsf-1-dev libkrb5-dev libmcrypt-dev libncurses5-dev libpango1.0-dev libpcap-dev libperl-dev \
+    libpq-dev libreadline-dev librrd-dev libsqlite3-dev libssl1.0-dev libxml2-dev tk-dev uuid-dev
+
 wget -qO- https://mathias-kettner.de/support/${VERSION}/check-mk-raw-${VERSION}.cre.tar.gz | tar -xvz
 cd check-mk-raw-${VERSION}.cre
 ./configure --with-boost-libdir=/usr/lib/arm-linux-gnueabihf
