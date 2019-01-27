@@ -10,7 +10,7 @@ echo "building gcc-${VERSION}..."
 
 # get gcc sources and build dependencies
 apt-get -y install build-essential make
-wget -qO- https://mirror.kumi.systems/gnu/gcc/gcc-${VERSION}/gcc-${VERSION}.tar.gz | tar -xvz
+wget -qO- https://mirror.kumi.systems/gnu/gcc/gcc-${VERSION}/gcc-${VERSION}.tar.gz  --no-check-certificate | tar -xvz
 
 cd gcc-${VERSION}
 contrib/download_prerequisites
