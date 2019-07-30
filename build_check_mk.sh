@@ -10,25 +10,11 @@ fi
 
 echo "building Check_MK ${VERSION}..."
 
-# Check for recommended compiler
-if ! gcc --version | grep -q 7.3.0; then
-    echo ""
-    echo "================================================================================"
-    echo "=              Could not find recommended compiler version 7.3.0.              ="
-    echo "=                                                                              ="
-    echo "=                  Run \`bash build_gcc.sh 7.3.0\` to build it.                  ="
-    echo "=                                                                              ="
-    echo "=  If you wish to proceed with your current compiler, just wait for a minute.  ="
-    echo "================================================================================"
-    echo ""
-    sleep 1m
-fi
-
 # get check_mk sources and build dependencies
-apt-get -y install apache2 build-essential debhelper dnsutils dpatch flex fping git git-buildpackage make rpcbind \
+apt-get -y install build-essential debhelper dnsutils dpatch flex fping git git-buildpackage make rpcbind \
     rrdtool smbclient snmp apache2-dev default-libmysqlclient-dev dietlibc-dev libboost-all-dev libboost-dev \
-    libcloog-ppl1 libcurl4-openssl-dev libdbi-dev libevent-dev libffi-dev libfreeradius-dev libgd-dev libglib2.0-dev \
-    libgnutls28-dev libgsf-1-dev libkrb5-dev libmcrypt-dev libncurses5-dev libpango1.0-dev libpcap-dev libperl-dev \
+    libcloog-ppl1 libdbi-dev libevent-dev libffi-dev libfreeradius-dev libgd-dev libglib2.0-dev \
+    libgnutls28-dev libgsf-1-dev libkrb5-dev libmcrypt-dev libncurses-dev libpango1.0-dev libpcap-dev libperl-dev \
     libpq-dev libreadline-dev librrd-dev libsqlite3-dev libssl1.0-dev libxml2-dev tk-dev uuid-dev
 
 wget -qO- https://mathias-kettner.de/support/${VERSION}/check-mk-raw-${VERSION}.cre.tar.gz | tar -xvz
