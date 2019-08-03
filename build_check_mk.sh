@@ -11,7 +11,7 @@ fi
 echo "building Check_MK ${VERSION}..."
 
 # get check_mk sources and build dependencies
-apt-get -y install build-essential debhelper dnsutils dpatch flex fping git git-buildpackage make rpcbind \
+apt-get -y install apache2 build-essential debhelper dnsutils dpatch flex fping git git-buildpackage make rpcbind \
     rrdtool smbclient snmp apache2-dev default-libmysqlclient-dev dietlibc-dev libboost-all-dev libboost-dev \
     libcloog-ppl1 libdbi-dev libevent-dev libffi-dev libfreeradius-dev libgd-dev libglib2.0-dev \
     libgnutls28-dev libgsf-1-dev libkrb5-dev libmcrypt-dev libncurses-dev libpango1.0-dev libpcap-dev libperl-dev \
