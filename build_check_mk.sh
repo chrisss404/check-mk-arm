@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.5.0p2"
+VERSION="1.5.0p21"
 SNAP7_VERSION="1.3.0"
 FAST_BUILD=0
 
@@ -15,7 +15,7 @@ apt-get -y install apache2 build-essential debhelper dnsutils dpatch flex fping 
     rrdtool smbclient snmp apache2-dev default-libmysqlclient-dev dietlibc-dev libboost-all-dev libboost-dev \
     libcloog-ppl1 libdbi-dev libevent-dev libffi-dev libfreeradius-dev libgd-dev libglib2.0-dev \
     libgnutls28-dev libgsf-1-dev libkrb5-dev libmcrypt-dev libncurses-dev libpango1.0-dev libpcap-dev libperl-dev \
-    libpq-dev libreadline-dev librrd-dev libsqlite3-dev libssl1.0-dev libxml2-dev tk-dev uuid-dev
+    libpq-dev libreadline-dev librrd-dev libsqlite3-dev libssl-dev libxml2-dev tk-dev uuid-dev
 
 wget -qO- https://mathias-kettner.de/support/${VERSION}/check-mk-raw-${VERSION}.cre.tar.gz | tar -xvz
 cd check-mk-raw-${VERSION}.cre
