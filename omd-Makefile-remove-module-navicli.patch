@@ -1,0 +1,10 @@
+--- omd/Makefile	2019-09-23 16:42:27.000000000 +0200
++++ omd/Makefile_v2	2019-09-28 09:43:33.578249056 +0200
+@@ -50,7 +50,6 @@
+     nsca \
+     omd \
+     openhardwaremonitor \
+-    navicli \
+     pnp4nagios \
+     maintenance \
+     patch \

@@ -1,0 +1,11 @@
+--- omd/packages/omd/omdlib/certs.py    2019-09-23 16:42:28.000000000 +0200
++++ omd/packages/omd/omdlib/certs_v2.py 2019-09-30 22:07:07.313246656 +0200
+@@ -34,7 +34,7 @@
+ from OpenSSL import crypto
+ from OpenSSL.SSL import FILETYPE_PEM  # type: ignore
+
+-CERT_NOT_AFTER = 999 * 365 * 24 * 60 * 60  # 999 years by default
++CERT_NOT_AFTER = 65 * 365 * 24 * 60 * 60  # 65 years by default
+ CA_CERT_NOT_AFTER = CERT_NOT_AFTER
+
+

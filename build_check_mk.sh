@@ -1,7 +1,7 @@
 #!/bin/bash
 
-VERSION="1.5.0p21"
-SNAP7_VERSION="1.3.0"
+VERSION="1.6.0p2"
+SNAP7_VERSION="1.4.2"
 FAST_BUILD=0
 
 if [ $# -gt 0 ]; then
@@ -22,6 +22,8 @@ cd check-mk-raw-${VERSION}.cre
 ./configure --with-boost-libdir=/usr/lib/arm-linux-gnueabihf
 
 # patch files
+patch -p0 < ../omd-Makefile-remove-module-navicli.patch
+patch -p0 < ../omdlib-reduce-certificate-maximum-validity-period.patch
 if [ ${FAST_BUILD} -eq 1 ]; then
     patch -p0 < ../python-Makefile-disable-optimization.patch
 fi
