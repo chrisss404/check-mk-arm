@@ -1,7 +1,7 @@
 
 ## Check_MK for RaspberryPi
 
-The pre-build packages are tested on a Raspberry Pi 3 running [Raspbian](https://www.raspberrypi.org/downloads/raspbian/). Keep in mind that you may encounter issues using a different setup.
+The pre-built packages are tested on a Raspberry Pi 3 running [Raspbian](https://www.raspberrypi.org/downloads/raspbian/). Keep in mind that you may encounter issues using a different setup.
 
 The sources of Check_MK can be found here: https://github.com/tribe29/checkmk
 
