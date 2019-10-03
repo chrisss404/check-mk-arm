@@ -9,7 +9,7 @@ This build is tested on Raspberry Pi 1 and 3, even though it runs on the first e
     dpkg -i check-mk-raw-*_armhf.deb
     apt-get install -f
 
-![Check_MK](https://raw.github.com/chrisss404/check-mk-arm/master/data/check_mk.png)
+![Check_MK](https://raw.github.com/chrisss404/check-mk-arm/1.5.0/data/check_mk.png)
 
 ### Build
 
