@@ -3,7 +3,7 @@
 
 
 def check_mk_version_valid_info(info):
-    return info is not None and len(info) == 1 and len(info[0]) == 2
+    return info is not None and len(info) == 1 and len(info[0]) == 3
 
 
 def inventory_check_mk_version(info):
@@ -15,11 +15,11 @@ def check_check_mk_version(_no_item, _no_params, info):
     if not check_mk_version_valid_info(info):
         return
 
-    version, up_to_date = info[0]
+    arm_version, latest_version, up_to_date = info[0]
     state = int(up_to_date)
-    details = 'Check_MK %s is the latest version' % version
+    details = 'Check_MK %s is the latest version' % arm_version
     if state > 0:
-        details = 'Check_MK %s is no longer the latest version' % version
+        details = 'Check_MK %s is out of date, current version: %s' % (arm_version, latest_version)
 
     return state, details
 
