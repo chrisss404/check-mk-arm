@@ -5,6 +5,10 @@ import json
 import requests
 
 
+access_token = '<your-github-personal-access-token>'
+version_of_interest = '1.6.0'
+
+
 def get_arm_version():
     response = requests.get('https://api.github.com/repos/chrisss404/check-mk-arm/releases/latest')
     last_release = json.loads(response.text)
@@ -12,11 +16,11 @@ def get_arm_version():
 
 
 def get_checkmk_version():
-    headers = {"Authorization": "token <your-github-personal-access-token>"}
+    headers = {"Authorization": "token " + access_token}
     query = '''
         query($repo_owner: String!, $repo_name: String!) {
           repository(owner: $repo_owner, name: $repo_name) {
-            refs(refPrefix: "refs/tags/", last: 1, orderBy: {field: TAG_COMMIT_DATE, direction: ASC}) {
+            refs(refPrefix: "refs/tags/", last: 4, orderBy: {field: TAG_COMMIT_DATE, direction: ASC}) {
               edges {
                 node {
                   name
@@ -33,7 +37,11 @@ def get_checkmk_version():
     response = requests.post('https://api.github.com/graphql', json={'query': query, 'variables': variables}, headers=headers)
     if response.status_code == 200:
         try:
-            return json.loads(response.text)['data']['repository']['refs']['edges'][0]['node']['name'].lstrip('v')
+            edges = reversed(json.loads(response.text)['data']['repository']['refs']['edges'])
+            for edge in edges:
+                tag_name = edge['node']['name']
+                if version_of_interest in tag_name:
+                    return tag_name.lstrip('v')
         except:
             pass
     return 'unknown'
