@@ -28,6 +28,14 @@ The sources of Check_MK can be found here: https://github.com/tribe29/checkmk
 
 ### Patches
 
+#### Skip site certificate validity if cert valid until is empty
+
+    cp checks/livestatus_status checks/livestatus_status_v2
+    vim checks/livestatus_status_v2
+    -    if cert_valid_until is not None:
+    +    if cert_valid_until is not None and cert_valid_until != "":
+    diff -u checks/livestatus_status checks/livestatus_status_v2 > ../checks-livestatus-status-add-empty-string-check.patch
+
 #### Reduce maximum validity period of site certificates
 
     cp omd/packages/omd/omdlib/certs.py omd/packages/omd/omdlib/certs_v2.py

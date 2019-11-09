@@ -1,0 +1,11 @@
+--- checks/livestatus_status    2019-11-09 12:52:50.000000000 +0100
++++ checks/livestatus_status_v2 2019-11-09 13:37:02.008372317 +0100
+@@ -144,7 +144,7 @@
+
+     pem_path = "/omd/sites/%s/etc/ssl/sites/%s.pem" % (item, item)
+     cert_valid_until = ssl_certs.get(item, {}).get(pem_path)
+-    if cert_valid_until is not None:
++    if cert_valid_until is not None and cert_valid_until != "":
+         days_left = (int(cert_valid_until) - time.time()) / 86400.0
+         valid_until_formatted = time.strftime("%Y-%m-%d %H:%M:%S",
+                                               time.localtime(int(cert_valid_until)))
