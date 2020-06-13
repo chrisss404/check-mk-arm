@@ -1,8 +1,7 @@
 #!/bin/bash
 
-VERSION="1.6.0p2"
+VERSION="1.6.0p13"
 SNAP7_VERSION="1.4.2"
-FAST_BUILD=0
 
 if [ $# -gt 0 ]; then
   VERSION="$1"
@@ -22,12 +21,8 @@ cd check-mk-raw-${VERSION}.cre
 ./configure --with-boost-libdir=/usr/lib/arm-linux-gnueabihf
 
 # patch files
-patch -p0 < ../checks-livestatus-status-add-empty-string-check.patch
 patch -p0 < ../omd-Makefile-remove-module-navicli.patch
 patch -p0 < ../omdlib-reduce-certificate-maximum-validity-period.patch
-if [ ${FAST_BUILD} -eq 1 ]; then
-    patch -p0 < ../python-Makefile-disable-optimization.patch
-fi
 
 # prepare snap7
 tar -xvzf omd/packages/snap7/snap7-full-${SNAP7_VERSION}.tar.gz -C omd/packages/snap7
