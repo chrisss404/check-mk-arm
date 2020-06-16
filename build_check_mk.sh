@@ -23,6 +23,7 @@ cd check-mk-raw-${VERSION}.cre
 # patch files
 patch -p0 < ../omd-Makefile-remove-module-navicli.patch
 patch -p0 < ../omdlib-reduce-certificate-maximum-validity-period.patch
+patch -p0 < ../python-make-add-fno-semantic-interposition.patch
 
 # prepare snap7
 tar -xvzf omd/packages/snap7/snap7-full-${SNAP7_VERSION}.tar.gz -C omd/packages/snap7

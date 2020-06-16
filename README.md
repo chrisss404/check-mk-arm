@@ -43,3 +43,13 @@ The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
     vim omd/Makefile_v2
     -    navicli \
     diff -u omd/Makefile omd/Makefile_v2 > ../omd-Makefile-remove-module-navicli.patch
+
+#### Enable no-semantic-interposition compiler flag for python build
+
+    cp omd/packages/Python/Python.make omd/packages/Python/Python.make_v2
+    vim omd/packages/Python/Python.make_v2
+    +            CFLAGS="${CFLAGS} -fno-semantic-interposition" \
+    -            LDFLAGS="-Wl,--rpath,$(OMD_ROOT)/lib"
+    +            LDFLAGS="-Wl,--rpath,$(OMD_ROOT)/lib -fno-semantic-interposition"
+    diff -u omd/packages/Python/Python.make omd/packages/Python/Python.make_v2 > ../python-make-add-fno-semantic-interposition.patch
+

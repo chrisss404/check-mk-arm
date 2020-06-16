@@ -1,0 +1,12 @@
+--- omd/packages/Python/Python.make	2020-06-10 10:44:27.000000000 +0200
++++ omd/packages/Python/Python.make_v2	2020-06-16 20:22:07.992797736 +0200
+@@ -46,7 +46,8 @@
+ 	    --enable-unicode=ucs4 \
+ 	    --with-ensurepip=install \
+ 	    $(PYTHON_ENABLE_OPTIMIZATIONS) \
+-	    LDFLAGS="-Wl,--rpath,$(OMD_ROOT)/lib"
++	    CFLAGS="${CFLAGS} -fno-semantic-interposition" \
++	    LDFLAGS="-Wl,--rpath,$(OMD_ROOT)/lib -fno-semantic-interposition"
+ 	cd $(PYTHON_DIR) ; $(PATH_VAR) ; $(MAKE) -j2
+ # Install python files (needed by dependent packages like mod_python,
+ # python-modules, ...) during compilation and install targets.
