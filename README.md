@@ -1,11 +1,11 @@
 
-## Checkmk for RaspberryPi
+## Checkmk for Raspberry Pi
 
-The pre-built packages are tested on a Raspberry Pi 3 running [Raspbian](https://www.raspberrypi.org/downloads/raspbian/). Consider [building Checkmk yourself](#build-it-yourself) if you intend to run it on a different system.
+The pre-built packages are tested on a Raspberry Pi 3 running [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/). Consider [building Checkmk yourself](#build-it-yourself) if you intend to run it on a different system.
 
 The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
 
-### Install Checkmk on Raspbian
+### Install Checkmk to Raspberry Pi OS
 
 #### Get and install latest pre-built package
 
@@ -15,10 +15,10 @@ The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
 
 #### Latest pre-built packages
 
-* Checkmk 1.6.0 for Raspbian Buster: [latest](https://github.com/chrisss404/check-mk-arm/releases/latest)
-* Checkmk 1.5.0 for Raspbian Buster: [1.5.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p22)
-* Checkmk 1.5.0 for Raspbian Stretch: [1.5.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p20)
-* Checkmk 1.4.0 for Raspbian Stretch: [1.4.0p35](https://github.com/chrisss404/check-mk-arm/releases/tag/1.4.0p35)
+* Checkmk 1.6.0 for Raspberry Pi OS (32-bit) Buster: [latest](https://github.com/chrisss404/check-mk-arm/releases/latest)
+* Checkmk 1.5.0 for Raspberry Pi OS (32-bit) Buster: [1.5.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p22)
+* Checkmk 1.5.0 for Raspberry Pi OS (32-bit) Stretch: [1.5.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p20)
+* Checkmk 1.4.0 for Raspberry Pi OS (32-bit) Stretch: [1.4.0p35](https://github.com/chrisss404/check-mk-arm/releases/tag/1.4.0p35)
 
 ![Checkmk](https://raw.github.com/chrisss404/check-mk-arm/master/data/check_mk.png)
 
