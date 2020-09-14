@@ -26,6 +26,9 @@ The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
 
     # build a specific version of Checkmk, e.g.: 1.6.0p2
     bash build_check_mk.sh <version>
+    
+    # install dependencies and build Checkmk
+    INSTALL_DEPENDENCIES=1 bash build_check_mk.sh <version>
 
 ### Patches
 
