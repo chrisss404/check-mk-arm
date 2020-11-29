@@ -24,13 +24,13 @@ The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
 
 #### Get and install latest pre-built package
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/1.6.0p18 | grep browser_download_url | cut -d '"' -f 4 | grep bionic_arm64.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/1.6.0p19 | grep browser_download_url | cut -d '"' -f 4 | grep bionic_arm64.deb) 
     dpkg -i check-mk-raw-*.bionic_arm64.deb
     apt-get install -f
 
 #### Latest pre-built packages
 
-* Checkmk 1.6.0 for Ubuntu 18.04 LTS (64-bit) Bionic Beaver: [1.6.0p18](https://github.com/chrisss404/check-mk-arm/releases/1.6.0p18)
+* Checkmk 1.6.0 for Ubuntu 18.04 LTS (64-bit) Bionic Beaver: [1.6.0p19](https://github.com/chrisss404/check-mk-arm/releases/1.6.0p19)
 
 ![Checkmk](https://raw.github.com/chrisss404/check-mk-arm/master/data/check_mk.png)
 
