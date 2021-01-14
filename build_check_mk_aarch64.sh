@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.6.0p19"
+VERSION="1.6.0p20"
 DEB_FULLNAME="check_mk_server for Ubuntu 20.04 on RPI4"
 DEB_EMAIL="your@email.foo"
 
