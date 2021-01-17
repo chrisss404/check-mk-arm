@@ -2,6 +2,7 @@
 ## Checkmk for Raspberry Pi
 
 The pre-built packages are tested on a Raspberry Pi 3 running [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/). Consider [building Checkmk yourself](#build-it-yourself) if you intend to run it on a different system.
+The pre-built 64bit packages are tested on a Raspberry Pi 4.
 
 The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
 
@@ -24,13 +25,13 @@ The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
 
 #### Get and install latest pre-built package
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/1.6.0p19 | grep browser_download_url | cut -d '"' -f 4 | grep bionic_arm64.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/1.6.0p20 | grep browser_download_url | cut -d '"' -f 4 | grep bionic_arm64.deb) 
     dpkg -i check-mk-raw-*.bionic_arm64.deb
     apt-get install -f
 
 #### Latest pre-built packages
 
-* Checkmk 1.6.0 for Ubuntu 18.04 LTS (64-bit) Bionic Beaver: [1.6.0p19](https://github.com/chrisss404/check-mk-arm/releases/1.6.0p19)
+* Checkmk 1.6.0 for Ubuntu 18.04 LTS (64-bit) Bionic Beaver: [1.6.0p20](https://github.com/chrisss404/check-mk-arm/releases/1.6.0p20)
 
 ![Checkmk](https://raw.github.com/chrisss404/check-mk-arm/master/data/check_mk.png)
 
@@ -68,3 +69,9 @@ The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
     +            LDFLAGS="-Wl,--rpath,$(OMD_ROOT)/lib -fno-semantic-interposition"
     diff -u omd/packages/Python/Python.make omd/packages/Python/Python.make_v2 > ../python-make-add-fno-semantic-interposition.patch
 
+#### Switch to aarch64 for python build
+
+    cp omd/packages/Python3/Python3.make omd/packages/Python3/Python3.make_v2
+    vi omd/packages/Python3/Python3.make_v2
+    
+    diff -u omd/packages/Python3/Python3.make omd/packages/Python3/Python3.make_v2 > python-change-arch.patch
