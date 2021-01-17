@@ -1,0 +1,15 @@
+--- omd/packages/Python3/Python3.make	2020-12-22 15:07:15.000000000 +0000
++++ omd/packages/Python3/Python3.make_v2	2021-01-09 16:33:02.235281131 +0000
+@@ -53,10 +53,10 @@
+ 	done
+ # Native modules built based on this version need to use the correct rpath
+ 	sed -i 's|--rpath,/omd/versions/[^/]*/lib|--rpath,$(OMD_ROOT)/lib|g' \
+-	    $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
++	    $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_aarch64-linux-gnu.py
+ 	LD_LIBRARY_PATH="$(PACKAGE_PYTHON3_LD_LIBRARY_PATH)" \
+ 	    $(PACKAGE_PYTHON3_EXECUTABLE) -m py_compile \
+-	    $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
++	    $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_aarch64-linux-gnu.py
+ 	$(TOUCH) $@
+ 
+ $(PYTHON3_UNPACK): $(PACKAGE_DIR)/$(PYTHON3)/$(PYTHON3_DIR).tar.xz
