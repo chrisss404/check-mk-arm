@@ -1,0 +1,10 @@
+--- ./omd/packages/lasso/lasso.make	2021-02-06 16:10:10.861505772 +0000
++++ ./omd/packages/lasso/lasso.make	2021-02-06 16:13:11.734366837 +0000
+@@ -21,6 +21,7 @@
+ $(LASSO_BUILD): $(LASSO_UNPACK)
+ 	cd $(LASSO_BUILD_DIR) \
+ 	&& echo $(LASSO_VERS) > .tarball-version \
++        && sed -i -e 's/EXTRA_DIST += lasso/EXTRA_DIST = lasso/g' ./docs/reference/lasso/Makefile.am \
+ 	&& ./autogen.sh noconfig \
+         && ./configure --prefix=$(OMD_ROOT) --disable-gtk-doc --enable-static-linking \
+ 	&& $(MAKE)
