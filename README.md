@@ -21,10 +21,6 @@ The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
 * Checkmk 1.5.0 for Raspberry Pi OS (32-bit) Stretch: [1.5.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p20)
 * Checkmk 1.4.0 for Raspberry Pi OS (32-bit) Stretch: [1.4.0p35](https://github.com/chrisss404/check-mk-arm/releases/tag/1.4.0p35)
 
-#### Latest pre-built beta packages
-* Checkmk 2.0.0b6 for Ubuntu (64-bit) Groovy & Focal: [2.0.0b6](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0b6)
-* Checkmk 2.0.0b5 for Ubuntu (64-bit) Groovy & Focal: [2.0.0b5](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0b5)
-
 ### Install Checkmk to Ubuntu
 
 #### Get and install latest pre-built package
@@ -36,6 +32,10 @@ The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
 #### Latest pre-built packages
 
 * Checkmk 1.6.0 for Ubuntu 18.04 LTS (64-bit) Bionic Beaver: [1.6.0p20](https://github.com/chrisss404/check-mk-arm/releases/1.6.0p20)
+
+#### Latest pre-built beta packages
+* Checkmk 2.0.0b6 for Ubuntu (64-bit) Groovy & Focal: [2.0.0b6](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0b6)
+* Checkmk 2.0.0b5 for Ubuntu (64-bit) Groovy & Focal: [2.0.0b5](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0b5)
 
 ![Checkmk](https://raw.github.com/chrisss404/check-mk-arm/master/data/check_mk.png)
 
