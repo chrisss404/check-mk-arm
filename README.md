@@ -34,6 +34,7 @@ The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
 * Checkmk 1.6.0 for Ubuntu 18.04 LTS (64-bit) Bionic Beaver: [1.6.0p20](https://github.com/chrisss404/check-mk-arm/releases/1.6.0p20)
 
 #### Latest pre-built beta packages
+* Checkmk 2.0.0b7 for Ubuntu (64-bit) Groovy & Focal: [2.0.0b7](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0b7)
 * Checkmk 2.0.0b6 for Ubuntu (64-bit) Groovy & Focal: [2.0.0b6](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0b6)
 * Checkmk 2.0.0b5 for Ubuntu (64-bit) Groovy & Focal: [2.0.0b5](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0b5)
 
