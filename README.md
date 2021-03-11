@@ -21,15 +21,15 @@ The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
 * Checkmk 1.5.0 for Raspberry Pi OS (32-bit) Stretch: [1.5.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p20)
 * Checkmk 1.4.0 for Raspberry Pi OS (32-bit) Stretch: [1.4.0p35](https://github.com/chrisss404/check-mk-arm/releases/tag/1.4.0p35)
 
-### Install Checkmk to Ubuntu
+### Install Checkmk to Ubuntu (arm64)
 
-#### Get and install latest pre-built package
+#### Get and install latest pre-built package (arm64)
 
     curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0 | grep browser_download_url | cut -d '"' -f 4 | grep groovy_arm64.deb) 
     dpkg -i check-mk-raw-*.groovy_arm64.deb
     apt-get install -f
 
-#### Latest pre-built packages
+#### Latest pre-built packages (arm64)
 
 * Checkmk 2.0.0 for Ubuntu 20.10 (64-bit) Groovy: [2.0.0](https://github.com/chrisss404/check-mk-arm/releases/2.0.0)
 
