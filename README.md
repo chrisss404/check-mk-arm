@@ -10,13 +10,13 @@ The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
 
 #### Get and install latest pre-built package
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/latest | grep browser_download_url | cut -d '"' -f 4 | grep buster_armhf.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/1.6.0p22 | grep browser_download_url | cut -d '"' -f 4 | grep buster_armhf.deb) 
     dpkg -i check-mk-raw-*.buster_armhf.deb
     apt-get install -f
 
 #### Latest pre-built packages
 
-* Checkmk 1.6.0 for Raspberry Pi OS (32-bit) Buster: [latest](https://github.com/chrisss404/check-mk-arm/releases/latest)
+* Checkmk 1.6.0 for Raspberry Pi OS (32-bit) Buster: [1.6.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.6.0p22)
 * Checkmk 1.5.0 for Raspberry Pi OS (32-bit) Buster: [1.5.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p22)
 * Checkmk 1.5.0 for Raspberry Pi OS (32-bit) Stretch: [1.5.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p20)
 * Checkmk 1.4.0 for Raspberry Pi OS (32-bit) Stretch: [1.4.0p35](https://github.com/chrisss404/check-mk-arm/releases/tag/1.4.0p35)
