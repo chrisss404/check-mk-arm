@@ -1,0 +1,11 @@
+--- omd/packages/lasso/lasso-2.6.1.2/docs/reference/lasso/Makefile.am   2021-03-11 17:07:04.918514792 +0100
++++ omd/packages/lasso/lasso-2.6.1.2/docs/reference/lasso/Makefile.am_v2        2021-03-11 17:08:25.034968853 +0100
+@@ -95,7 +95,7 @@
+
+ # Other files to distribute
+ # e.g. EXTRA_DIST += version.xml.in
+-EXTRA_DIST += lasso-sections.txt lasso-docs.sgml version.xml.in lasso.types.in style.css
++EXTRA_DIST = lasso-sections.txt lasso-docs.sgml version.xml.in lasso.types.in style.css
+
+ # Files not to distribute
+ # for --rebuild-types in $(SCAN_OPTIONS), e.g. $(DOC_MODULE).types

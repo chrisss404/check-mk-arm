@@ -23,7 +23,7 @@ cd check-mk-raw-${VERSION}.cre
 patch -p0 < ../omd-Makefile-remove-module-navicli.patch
 patch -p0 < ../omdlib-reduce-certificate-maximum-validity-period.patch
 patch -p0 < ../python-make-add-fno-semantic-interposition.patch
-patch -p0 < ../python-change-arch.patch
+patch -p0 < ../python-make-set-aarch64-architecture.patch
 
 touch agents/windows/check_mk.user.yml
 touch agents/windows/check_mk_agent_arm64.{exe,msi}
