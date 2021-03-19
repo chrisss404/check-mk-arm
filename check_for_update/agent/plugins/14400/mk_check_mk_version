@@ -6,7 +6,7 @@ import requests
 
 
 access_token = '<your-github-personal-access-token>'
-version_of_interest = '1.6.0'
+version_of_interest = '2.0.0'
 
 
 def get_arm_version():

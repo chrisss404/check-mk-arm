@@ -1,47 +1,58 @@
 
 ## Checkmk for Raspberry Pi
 
-The pre-built packages are tested on a Raspberry Pi 3 running [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/). Consider [building Checkmk yourself](#build-it-yourself) if you intend to run it on a different system.
-The pre-built 64bit packages are tested on a Raspberry Pi 4.
+On the [release](https://github.com/chrisss404/check-mk-arm/releases) page you can find deb packages targeting the following systems:
+
+* [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/) (formerly Raspbian) "Buster" (armhf) on a RPi 3
+* [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Groovy" (arm64) on a RPi 4
+
+If your system is listed you can follow the instructions from section [Install Checkmk to your RPi](#install-checkmk-to-your-rpi), otherwise please refer to section [Build Checkmk from sources](#build-checkmk-from-sources) to compile a package for your system.  
 
 The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
 
-### Install Checkmk to Raspberry Pi OS
+![Checkmk](https://raw.github.com/chrisss404/check-mk-arm/master/data/check_mk.png)
 
-#### Get and install latest pre-built package
+### Recommended Configurations
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/1.6.0p22 | grep browser_download_url | cut -d '"' -f 4 | grep buster_armhf.deb) 
+##### Reduce the number of apache processes
+
+Go to `Setup` > `General` > `Global settings` > `Site Management` and reduce the number at `Apache process tuning` to 5.
+
+### Install Checkmk to your RPi
+
+##### Raspberry Pi OS Buster (armhf)
+
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p1 | grep browser_download_url | cut -d '"' -f 4 | grep buster_armhf.deb) 
     dpkg -i check-mk-raw-*.buster_armhf.deb
     apt-get install -f
 
-#### Latest pre-built packages
-
-* Checkmk 1.6.0 for Raspberry Pi OS (32-bit) Buster: [1.6.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.6.0p22)
-* Checkmk 1.5.0 for Raspberry Pi OS (32-bit) Buster: [1.5.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p22)
-* Checkmk 1.5.0 for Raspberry Pi OS (32-bit) Stretch: [1.5.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p20)
-* Checkmk 1.4.0 for Raspberry Pi OS (32-bit) Stretch: [1.4.0p35](https://github.com/chrisss404/check-mk-arm/releases/tag/1.4.0p35)
-
-### Install Checkmk to Ubuntu (arm64)
-
-#### Get and install latest pre-built package (arm64)
+##### Ubuntu Groovy (arm64)
 
     curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0 | grep browser_download_url | cut -d '"' -f 4 | grep groovy_arm64.deb) 
     dpkg -i check-mk-raw-*.groovy_arm64.deb
     apt-get install -f
 
-#### Latest pre-built packages (arm64)
+### Package overview
 
-* Checkmk 2.0.0 for Ubuntu 20.10 (64-bit) Groovy: [2.0.0](https://github.com/chrisss404/check-mk-arm/releases/2.0.0)
+##### Raspberry Pi OS (armhf)
 
-![Checkmk](https://raw.github.com/chrisss404/check-mk-arm/master/data/check_mk.png)
+* Checkmk 2.0.0 for Raspberry Pi OS Buster: [2.0.0p1](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p1)
+* Checkmk 1.6.0 for Raspberry Pi OS Buster: [1.6.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.6.0p22)
+* Checkmk 1.5.0 for Raspberry Pi OS Buster: [1.5.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p22)
+* Checkmk 1.5.0 for Raspberry Pi OS Stretch: [1.5.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p20)
+* Checkmk 1.4.0 for Raspberry Pi OS Stretch: [1.4.0p35](https://github.com/chrisss404/check-mk-arm/releases/tag/1.4.0p35)
 
-### Build it yourself
+##### Ubuntu (arm64)
 
-    # build a specific version of Checkmk, e.g.: 1.6.0p2
-    bash build_check_mk.sh <version>
-    
-    # install dependencies and build Checkmk
-    INSTALL_DEPENDENCIES=1 bash build_check_mk.sh <version>
+* Checkmk 2.0.0 for Ubuntu 20.10 Groovy: [2.0.0](https://github.com/chrisss404/check-mk-arm/releases/2.0.0)
+
+### Build Checkmk from sources
+
+    # build a specific version of Checkmk targeting Buster, e.g.: 2.0.0p1
+    INSTALL_DEPENDENCIES=1 bash build_check_mk_buster32.sh <version>
+
+    # build a specific version of Checkmk targeting Groovy, e.g.: 2.0.0p1
+    bash build_check_mk_groovy64.sh <version>
 
 ### Patches
 
@@ -62,16 +73,37 @@ The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
 
 #### Enable no-semantic-interposition compiler flag for python build
 
-    cp omd/packages/Python/Python.make omd/packages/Python/Python.make_v2
-    vim omd/packages/Python/Python.make_v2
-    +            CFLAGS="${CFLAGS} -fno-semantic-interposition" \
-    -            LDFLAGS="-Wl,--rpath,$(OMD_ROOT)/lib"
-    +            LDFLAGS="-Wl,--rpath,$(OMD_ROOT)/lib -fno-semantic-interposition"
-    diff -u omd/packages/Python/Python.make omd/packages/Python/Python.make_v2 > ../python-make-add-fno-semantic-interposition.patch
+    cp omd/packages/Python3/Python3.make omd/packages/Python3/Python3.make_v2
+    vim omd/packages/Python3/Python3.make_v2
+    +                CFLAGS="${CFLAGS} -fno-semantic-interposition" \
+    -                LDFLAGS="-Wl,--rpath,/omd/versions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/lib $(PACKAGE_OPENSSL_LDFLAGS)"
+    +                LDFLAGS="-Wl,--rpath,/omd/versions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/lib -fno-semantic-interposition $(PACKAGE_OPENSSL_LDFLAGS)"
+    diff -u omd/packages/Python3/Python3.make omd/packages/Python3/Python3.make_v2 > ../python-make-add-fno-semantic-interposition.patch
 
-#### Switch to aarch64 for python build
+#### Set system architecture to aarch64 in python build
 
     cp omd/packages/Python3/Python3.make omd/packages/Python3/Python3.make_v2
-    vi omd/packages/Python3/Python3.make_v2
-    
-    diff -u omd/packages/Python3/Python3.make omd/packages/Python3/Python3.make_v2 > python-change-arch.patch
+    vim omd/packages/Python3/Python3.make_v2
+    -            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
+    +            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_aarch64-linux-gnu.py
+    -            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
+    +            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_aarch64-linux-gnu.py
+    diff -u omd/packages/Python3/Python3.make omd/packages/Python3/Python3.make_v2 > ../python-make-set-aarch64-architecture.patch
+
+#### Set system architecture to arm in python build
+
+    cp omd/packages/Python3/Python3.make omd/packages/Python3/Python3.make_v2
+    vim omd/packages/Python3/Python3.make_v2
+    -            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
+    +            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_arm-linux-gnueabihf.py
+    -            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
+    +            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_arm-linux-gnueabihf.py
+    diff -u omd/packages/Python3/Python3.make omd/packages/Python3/Python3.make_v2 > ../python-make-set-arm-architecture.patch
+
+#### Fix lasso makefile
+
+    cp omd/packages/lasso/lasso-2.6.1.2/docs/reference/lasso/Makefile.am omd/packages/lasso/lasso-2.6.1.2/docs/reference/lasso/Makefile.am_v2
+    vim omd/packages/lasso/lasso-2.6.1.2/docs/reference/lasso/Makefile.am_v2
+    -EXTRA_DIST += lasso-sections.txt lasso-docs.sgml version.xml.in lasso.types.in style.css
+    +EXTRA_DIST = lasso-sections.txt lasso-docs.sgml version.xml.in lasso.types.in style.css
+    diff -u omd/packages/lasso/lasso-2.6.1.2/docs/reference/lasso/Makefile.am omd/packages/lasso/lasso-2.6.1.2/docs/reference/lasso/Makefile.am_v2 > ../lasso-docs-make-fix-error.patch
