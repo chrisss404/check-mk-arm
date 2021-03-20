@@ -5,6 +5,7 @@ On the [release](https://github.com/chrisss404/check-mk-arm/releases) page you c
 
 * [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/) (formerly Raspbian) "Buster" (armhf) on a RPi 3
 * [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Groovy" (arm64) on a RPi 4
+* [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Focal" (arm64) on a RPi 4
 
 If your system is listed you can follow the instructions from section [Install Checkmk to your RPi](#install-checkmk-to-your-rpi), otherwise please refer to section [Build Checkmk from sources](#build-checkmk-from-sources) to compile a package for your system.  
 
@@ -32,6 +33,12 @@ Go to `Setup` > `General` > `Global settings` > `Site Management` and reduce the
     dpkg -i check-mk-raw-*.groovy_arm64.deb
     apt-get install -f
 
+##### Ubuntu Focal (arm64)
+
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0 | grep browser_download_url | cut -d '"' -f 4 | grep focal_arm64.deb) 
+    dpkg -i check-mk-raw-*.focal_arm64.deb
+    apt-get install -f
+
 ### Package overview
 
 ##### Raspberry Pi OS (armhf)
@@ -45,6 +52,7 @@ Go to `Setup` > `General` > `Global settings` > `Site Management` and reduce the
 ##### Ubuntu (arm64)
 
 * Checkmk 2.0.0 for Ubuntu 20.10 Groovy: [2.0.0](https://github.com/chrisss404/check-mk-arm/releases/2.0.0)
+* Checkmk 2.0.0 for Ubuntu 20.04 Focal: [2.0.0](https://github.com/chrisss404/check-mk-arm/releases/2.0.0)
 
 ### Build Checkmk from sources
 
