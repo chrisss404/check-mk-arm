@@ -3,7 +3,7 @@
 
 On the [release](https://github.com/chrisss404/check-mk-arm/releases) page you can find deb packages targeting the following systems:
 
-* [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/) (formerly Raspbian) "Buster" (armhf) on a RPi 3
+* [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/) (formerly Raspbian) "Buster" (armhf) on a RPi 3 and 4
 * [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Groovy" (arm64) on a RPi 4
 * [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Focal" (arm64) on a RPi 4
 
@@ -20,6 +20,8 @@ The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
 Go to `Setup` > `General` > `Global settings` > `Site Management` and reduce the number at `Apache process tuning` to 5.
 
 ### Install Checkmk to your RPi
+
+The following sections show how to download and install the DEB packages available from this repo. After the installation you could follow the [official user guide](https://docs.checkmk.com/latest/en/) to set it up and start your monitoring journey.
 
 ##### Raspberry Pi OS Buster (armhf)
 
