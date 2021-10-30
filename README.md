@@ -28,7 +28,7 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Raspberry Pi OS Buster (armhf)
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p12 | grep browser_download_url | cut -d '"' -f 4 | grep buster_armhf.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p13 | grep browser_download_url | cut -d '"' -f 4 | grep buster_armhf.deb) 
     dpkg -i check-mk-raw-*.buster_armhf.deb
     apt-get install -f
 
@@ -54,7 +54,7 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Raspberry Pi OS (armhf)
 
-* Checkmk 2.0.0 for Raspberry Pi OS Buster: [2.0.0p12](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p12)
+* Checkmk 2.0.0 for Raspberry Pi OS Buster: [2.0.0p13](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p13)
 * Checkmk 1.6.0 for Raspberry Pi OS Buster: [1.6.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.6.0p22)
 * Checkmk 1.5.0 for Raspberry Pi OS Buster: [1.5.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p22)
 * Checkmk 1.5.0 for Raspberry Pi OS Stretch: [1.5.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p20)
@@ -119,11 +119,3 @@ The following sections show how to download and install the DEB packages availab
     -            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
     +            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_arm-linux-gnueabihf.py
     diff -u omd/packages/Python3/Python3.make omd/packages/Python3/Python3.make_v2 > ../python-make-set-arm-architecture.patch
-
-#### Fix lasso makefile
-
-    cp omd/packages/lasso/lasso-2.6.1.2/docs/reference/lasso/Makefile.am omd/packages/lasso/lasso-2.6.1.2/docs/reference/lasso/Makefile.am_v2
-    vim omd/packages/lasso/lasso-2.6.1.2/docs/reference/lasso/Makefile.am_v2
-    -EXTRA_DIST += lasso-sections.txt lasso-docs.sgml version.xml.in lasso.types.in style.css
-    +EXTRA_DIST = lasso-sections.txt lasso-docs.sgml version.xml.in lasso.types.in style.css
-    diff -u omd/packages/lasso/lasso-2.6.1.2/docs/reference/lasso/Makefile.am omd/packages/lasso/lasso-2.6.1.2/docs/reference/lasso/Makefile.am_v2 > ../lasso-docs-make-fix-error.patch

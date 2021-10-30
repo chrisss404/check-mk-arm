@@ -29,11 +29,6 @@ patch -p0 < ../omdlib-reduce-certificate-maximum-validity-period.patch
 patch -p0 < ../python-make-add-fno-semantic-interposition.patch
 patch -p0 < ../python-make-set-arm-architecture.patch
 
-# prepare lasso
-tar -xvzf omd/packages/lasso/lasso-2.6.1.2.tar.gz -C omd/packages/lasso
-patch -p0 < ../lasso-docs-make-fix-error.patch
-tar czf omd/packages/lasso/lasso-2.6.1.2.tar.gz -C omd/packages/lasso lasso-2.6.1.2
-
 # prepare snap7
 tar -xvzf omd/packages/snap7/snap7-${SNAP7_VERSION}.tar.gz -C omd/packages/snap7
 cp omd/packages/snap7/snap7-${SNAP7_VERSION}/build/unix/arm_v6_linux.mk omd/packages/snap7/snap7-${SNAP7_VERSION}/build/unix/armv6l_linux.mk
