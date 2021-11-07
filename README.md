@@ -32,21 +32,27 @@ The following sections show how to download and install the DEB packages availab
     dpkg -i check-mk-raw-*.buster_armhf.deb
     apt-get install -f
 
+##### Ubuntu Impish (arm64)
+
+Coming soon ....
+
 ##### Ubuntu Hirsute (arm64)
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p12 | grep browser_download_url | cut -d '"' -f 4 | grep hirsute_arm64.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p15 | grep browser_download_url | cut -d '"' -f 4 | grep hirsute_arm64.deb) 
     dpkg -i check-mk-raw-*.hirsute_arm64.deb
     apt-get install -f
     
 ##### Ubuntu Groovy (arm64)
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p12 | grep browser_download_url | cut -d '"' -f 4 | grep groovy_arm64.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p15 | grep browser_download_url | cut -d '"' -f 4 | grep groovy_arm64.deb) 
     dpkg -i check-mk-raw-*.groovy_arm64.deb
     apt-get install -f
+    
+    ### Version 2.0.0.p15 is the last version for groovy, because of EOL from groovy.
 
 ##### Ubuntu Focal (arm64)
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p12 | grep browser_download_url | cut -d '"' -f 4 | grep focal_arm64.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p15 | grep browser_download_url | cut -d '"' -f 4 | grep focal_arm64.deb) 
     dpkg -i check-mk-raw-*.focal_arm64.deb
     apt-get install -f
 
@@ -62,9 +68,9 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Ubuntu (arm64)
 
-* Checkmk 2.0.0 for Ubuntu 21.04 Hirsute: [2.0.0p12](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p12)
-* Checkmk 2.0.0 for Ubuntu 20.10 Groovy: [2.0.0p12](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p12)
-* Checkmk 2.0.0 for Ubuntu 20.04 Focal: [2.0.0p12](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p12)
+* Checkmk 2.0.0 for Ubuntu 21.04 Hirsute: [2.0.0p15](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p12)
+* Checkmk 2.0.0 for Ubuntu 20.10 Groovy: [2.0.0p15](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p12)
+* Checkmk 2.0.0 for Ubuntu 20.04 Focal: [2.0.0p15](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p12)
 
 ### Build Checkmk from sources
 
