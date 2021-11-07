@@ -69,7 +69,7 @@ Coming soon ....
 
 * Checkmk 2.0.0 for Ubuntu 21.04 Hirsute: [2.0.0p15](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p12)
 * Checkmk 2.0.0 for Ubuntu 20.10 Groovy: [2.0.0p15](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p12)
-### Version 2.0.0.p15 is the last version for groovy, because of EOL from groovy.
+###### Version 2.0.0.p15 is the last version for groovy, because of EOL from groovy.
 * Checkmk 2.0.0 for Ubuntu 20.04 Focal: [2.0.0p15](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p12)
 
 ### Build Checkmk from sources
