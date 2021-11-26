@@ -29,7 +29,7 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Raspberry Pi OS Buster (armhf)
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p15 | grep browser_download_url | cut -d '"' -f 4 | grep buster_armhf.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p16 | grep browser_download_url | cut -d '"' -f 4 | grep buster_armhf.deb) 
     dpkg -i check-mk-raw-*.buster_armhf.deb
     apt-get install -f
 
@@ -59,7 +59,7 @@ Coming soon ....
 
 ##### Raspberry Pi OS (armhf)
 
-* Checkmk 2.0.0 for Raspberry Pi OS Buster: [2.0.0p15](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p15)
+* Checkmk 2.0.0 for Raspberry Pi OS Buster: [2.0.0p16](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p16)
 * Checkmk 1.6.0 for Raspberry Pi OS Buster: [1.6.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.6.0p22)
 * Checkmk 1.5.0 for Raspberry Pi OS Buster: [1.5.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p22)
 * Checkmk 1.5.0 for Raspberry Pi OS Stretch: [1.5.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p20)
