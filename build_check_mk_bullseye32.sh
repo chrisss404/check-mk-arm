@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="2.0.0p1"
+VERSION="2.0.0p17"
 SNAP7_VERSION="1.4.2"
 
 if [ $# -gt 0 ]; then

@@ -3,7 +3,7 @@
 
 On the [release](https://github.com/chrisss404/check-mk-arm/releases) page you can find deb packages targeting the following systems:
 
-* [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/) (formerly Raspbian) "Buster" (armhf) on a RPi 3 and 4
+* [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/) (formerly Raspbian) "Bullseye" (armhf) on a RPi 3 and 4
 * [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Impish" (arm64) on a RPi 4
 * [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Hirsute" (arm64) on a RPi 4
 * [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Groovy" (arm64) on a RPi 4 (EOL / last version will be 2.0.0.p16)
@@ -27,9 +27,9 @@ Go to `Setup` > `General` > `Global settings` > `Site Management` and reduce the
 
 The following sections show how to download and install the DEB packages available from this repo. After the installation you could follow the [official user guide](https://docs.checkmk.com/latest/en/) to set it up and start your monitoring journey.
 
-##### Raspberry Pi OS Buster (armhf)
+##### Raspberry Pi OS Bullseye (armhf)
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p16 | grep browser_download_url | cut -d '"' -f 4 | grep buster_armhf.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p17 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_armhf.deb) 
     dpkg -i check-mk-raw-*.buster_armhf.deb
     apt-get install -f
 
@@ -61,7 +61,8 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Raspberry Pi OS (armhf)
 
-* Checkmk 2.0.0 for Raspberry Pi OS Buster: [2.0.0p16](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p16)
+* Checkmk 2.0.0 for Raspberry Pi OS Bullseye: [2.0.0p17](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p17)
+* Checkmk 2.0.0 for Raspberry Pi OS Buster: [2.0.0p17](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p17)
 * Checkmk 1.6.0 for Raspberry Pi OS Buster: [1.6.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.6.0p22)
 * Checkmk 1.5.0 for Raspberry Pi OS Buster: [1.5.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p22)
 * Checkmk 1.5.0 for Raspberry Pi OS Stretch: [1.5.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p20)
