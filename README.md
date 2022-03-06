@@ -5,9 +5,9 @@ On the [release](https://github.com/chrisss404/check-mk-arm/releases) page you c
 
 * [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/) (formerly Raspbian) "Bullseye" (armhf) on a RPi 3 and 4
 * [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Impish" (arm64) on a RPi 4
-* [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Hirsute" (arm64) on a RPi 4
-* [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Groovy" (arm64) on a RPi 4 (EOL / last version will be 2.0.0.p16)
 * [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Focal" (arm64) on a RPi 4
+* [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Hirsute" (arm64) on a RPi 4 (EOL / last version will be 2.0.0.p20)
+* [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Groovy" (arm64) on a RPi 4 (EOL / last version will be 2.0.0.p16)
 
 ##### The builds for Focal and Groovy are untested !
 
@@ -33,9 +33,15 @@ The following sections show how to download and install the DEB packages availab
     dpkg -i check-mk-raw-*.bullseye_armhf.deb
     apt-get install -f
 
+##### Ubuntu Focal (arm64)
+
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p21 | grep browser_download_url | cut -d '"' -f 4 | grep focal_arm64.deb) 
+    dpkg -i check-mk-raw-*.focal_arm64.deb
+    apt-get install -f
+
 ##### Ubuntu Impish (arm64)
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p20 | grep browser_download_url | cut -d '"' -f 4 | grep impish_arm64.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p21 | grep browser_download_url | cut -d '"' -f 4 | grep impish_arm64.deb) 
     dpkg -i check-mk-raw-*.impish_arm64.deb
     apt-get install -f
 
@@ -51,12 +57,6 @@ The following sections show how to download and install the DEB packages availab
     dpkg -i check-mk-raw-*.groovy_arm64.deb
     apt-get install -f
 
-##### Ubuntu Focal (arm64)
-
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p20 | grep browser_download_url | cut -d '"' -f 4 | grep focal_arm64.deb) 
-    dpkg -i check-mk-raw-*.focal_arm64.deb
-    apt-get install -f
-
 ### Package overview
 
 ##### Raspberry Pi OS (armhf)
@@ -70,9 +70,11 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Ubuntu (arm64)
 
-* Checkmk 2.0.0 for Ubuntu 21.10 Impish: [2.0.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p20)
+* Checkmk 2.0.0 for Ubuntu 20.04 Focal: [2.0.0p21](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p21)
+* Checkmk 2.0.0 for Ubuntu 21.10 Impish: [2.0.0p21](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p21)
+
 * Checkmk 2.0.0 for Ubuntu 21.04 Hirsute: [2.0.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p20)
-* Checkmk 2.0.0 for Ubuntu 20.04 Focal: [2.0.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p20)
+###### Because of EOL from hirsute version 2.0.0.p20 is the last version for it.
 
 * Checkmk 2.0.0 for Ubuntu 20.10 Groovy: [2.0.0p16](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p16)
 ###### Version 2.0.0.p16 is the last version for groovy, because of EOL from groovy.
