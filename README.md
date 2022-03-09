@@ -3,11 +3,11 @@
 
 On the [release](https://github.com/chrisss404/check-mk-arm/releases) page you can find deb packages targeting the following systems:
 
-* [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/) (formerly Raspbian) "Bullseye" (armhf) on a RPi 3 and 4
-* [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Impish" (arm64) on a RPi 4
-* [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Focal" (arm64) on a RPi 4
-* [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Hirsute" (arm64) on a RPi 4 (EOL / last version will be 2.0.0.p20)
-* [Ubuntu](https://ubuntu.com/download/raspberry-pi/) "Groovy" (arm64) on a RPi 4 (EOL / last version will be 2.0.0.p16)
+* [Raspberry Pi OS (32-bit)](https://www.raspberrypi.org/downloads/raspberry-pi-os/) (formerly Raspbian) "Bullseye" on a RPi 3 and 4
+* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Impish" on a RPi 4
+* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Focal" on a RPi 4
+* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Hirsute" on a RPi 4 (EOL / last version will be 2.0.0.p20)
+* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Groovy" on a RPi 4 (EOL / last version will be 2.0.0.p16)
 
 ##### The builds for Focal and Groovy are untested !
 
@@ -27,31 +27,31 @@ Go to `Setup` > `General` > `Global settings` > `Site Management` and reduce the
 
 The following sections show how to download and install the DEB packages available from this repo. After the installation you could follow the [official user guide](https://docs.checkmk.com/latest/en/) to set it up and start your monitoring journey.
 
-##### Raspberry Pi OS Bullseye (armhf)
+##### Raspberry Pi OS (32-bit) Bullseye
 
     curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p21 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_armhf.deb) 
     dpkg -i check-mk-raw-*.bullseye_armhf.deb
     apt-get install -f
 
-##### Ubuntu Focal (arm64)
+##### Ubuntu (64-bit) Focal
 
     curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p21 | grep browser_download_url | cut -d '"' -f 4 | grep focal_arm64.deb) 
     dpkg -i check-mk-raw-*.focal_arm64.deb
     apt-get install -f
 
-##### Ubuntu Impish (arm64)
+##### Ubuntu (64-bit) Impish
 
     curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p21 | grep browser_download_url | cut -d '"' -f 4 | grep impish_arm64.deb) 
     dpkg -i check-mk-raw-*.impish_arm64.deb
     apt-get install -f
 
-##### Ubuntu Hirsute (arm64)
+##### Ubuntu (64-bit) Hirsute
 
     curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p20 | grep browser_download_url | cut -d '"' -f 4 | grep hirsute_arm64.deb) 
     dpkg -i check-mk-raw-*.hirsute_arm64.deb
     apt-get install -f
     
-##### Ubuntu Groovy (arm64)
+##### Ubuntu (64-bit) Groovy
 
     curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p16 | grep browser_download_url | cut -d '"' -f 4 | grep groovy_arm64.deb) 
     dpkg -i check-mk-raw-*.groovy_arm64.deb
@@ -59,16 +59,16 @@ The following sections show how to download and install the DEB packages availab
 
 ### Package overview
 
-##### Raspberry Pi OS (armhf)
+##### Raspberry Pi OS (32-bit)
 
 * Checkmk 2.0.0 for Raspberry Pi OS Bullseye: [2.0.0p21](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p21)
-* Checkmk 2.0.0 for Raspberry Pi OS Buster: [2.0.0p17](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p17)
+* Checkmk 2.0.0 for Raspberry Pi OS Buster: [2.0.0p17](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p17) (For more recent versions go to: [sergiodadi/check-mk-raspberry](https://github.com/sergiodadi/check-mk-raspberry))
 * Checkmk 1.6.0 for Raspberry Pi OS Buster: [1.6.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.6.0p22)
 * Checkmk 1.5.0 for Raspberry Pi OS Buster: [1.5.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p22)
 * Checkmk 1.5.0 for Raspberry Pi OS Stretch: [1.5.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p20)
 * Checkmk 1.4.0 for Raspberry Pi OS Stretch: [1.4.0p35](https://github.com/chrisss404/check-mk-arm/releases/tag/1.4.0p35)
 
-##### Ubuntu (arm64)
+##### Ubuntu (64-bit)
 
 * Checkmk 2.0.0 for Ubuntu 20.04 Focal: [2.0.0p21](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p21)
 * Checkmk 2.0.0 for Ubuntu 21.10 Impish: [2.0.0p21](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p21)
