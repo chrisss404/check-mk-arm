@@ -8,8 +8,10 @@ On the [release](https://github.com/chrisss404/check-mk-arm/releases) page you c
 * [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Focal" on a RPi 4
 * [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Hirsute" on a RPi 4 (EOL / last version will be 2.0.0.p20)
 * [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Groovy" on a RPi 4 (EOL / last version will be 2.0.0.p16)
+* [Debian (64-bit)](https://raspi.debian.net/tested/) "Bullseye" on a RPi 4
 
 ##### The builds for Focal and Groovy are untested !
+##### The build for Bullseye is untested !
 
 If your system is listed you can follow the instructions from section [Install Checkmk to your RPi](#install-checkmk-to-your-rpi), otherwise please refer to section [Build Checkmk from sources](#build-checkmk-from-sources) to compile a package for your system.
 
@@ -57,6 +59,12 @@ The following sections show how to download and install the DEB packages availab
     dpkg -i check-mk-raw-*.groovy_arm64.deb
     apt-get install -f
 
+##### Debian (64-bit) Bullseye
+
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p21 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_arm64.deb) 
+    dpkg -i check-mk-raw-*.bullseye_arm64.deb
+    apt-get install -f
+    
 ### Package overview
 
 ##### Raspberry Pi OS (32-bit)
@@ -78,6 +86,10 @@ The following sections show how to download and install the DEB packages availab
 
 * Checkmk 2.0.0 for Ubuntu 20.10 Groovy: [2.0.0p16](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p16)
 ###### Version 2.0.0.p16 is the last version for groovy, because of EOL from groovy.
+
+##### Debian (64-bit)
+
+* Checkmk 2.0.0 for Debian Bullseye: [2.0.0p21](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p21)
 
 ### Build Checkmk from sources
 
