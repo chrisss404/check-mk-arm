@@ -1,12 +1,12 @@
---- omd/packages/Python3/Python3.make	2020-12-01 00:14:17.000000000 +0100
-+++ omd/packages/Python3/Python3.make_v2	2020-12-22 12:07:15.176907155 +0100
-@@ -84,7 +84,8 @@
+--- omd/packages/Python/Python.make	2022-05-26 01:02:30.000000000 +0100
++++ omd/packages/Python/Python.make_v2	2022-06-10 21:31:45.732838310 +0100
+@@ -83,7 +83,8 @@
  	        --with-ensurepip=install \
  	        --with-openssl=$(PACKAGE_OPENSSL_DESTDIR) \
  	        $(PYTHON_ENABLE_OPTIMIZATIONS) \
--	        LDFLAGS="-Wl,--rpath,/omd/versions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/lib $(PACKAGE_OPENSSL_LDFLAGS)"
-+		CFLAGS="${CFLAGS} -fno-semantic-interposition" \
-+	        LDFLAGS="-Wl,--rpath,/omd/versions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/lib -fno-semantic-interposition $(PACKAGE_OPENSSL_LDFLAGS)"
- 	cd $(PYTHON3_BUILD_DIR) ; \
+-	        LDFLAGS="-Wl,--rpath,/omd/versions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/lib $(PACKAGE_OPENSSL_LDFLAGS)"
++	        CFLAGS="${CFLAGS} -fno-semantic-interposition" \
++	        LDFLAGS="-Wl,--rpath,/omd/versions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/lib -fno-semantic-interposition $(PACKAGE_OPENSSL_LDFLAGS)"
+ 	cd $(PYTHON_BUILD_DIR) ; \
  	    $(MAKE) -j2
  	$(TOUCH) $@
