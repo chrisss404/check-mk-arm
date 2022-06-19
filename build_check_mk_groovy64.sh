@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="2.0.0b3"
+VERSION="2.1.0p2"
 SNAP7_VERSION="1.4.2"
 
 if [ $# -gt 0 ]; then
@@ -24,6 +24,8 @@ patch -p0 < ../omd-Makefile-remove-module-navicli.patch
 patch -p0 < ../omdlib-reduce-certificate-maximum-validity-period.patch
 patch -p0 < ../python-make-add-fno-semantic-interposition.patch
 patch -p0 < ../python-make-set-aarch64-architecture.patch
+patch -p0 < ../protobuf-make-add-latomic.patch
+patch -p0 < ../pipfile-remove-playwright.patch
 
 touch agents/windows/check_mk.user.yml
 touch agents/windows/check_mk_agent_arm64.{exe,msi}
@@ -59,6 +61,9 @@ cp /tmp/snap7-${SNAP7_VERSION}/build/unix/arm_v6_linux.mk /tmp/snap7-${SNAP7_VER
 sed -i  's/arm_v6/aarch64/' /tmp/snap7-${SNAP7_VERSION}/build/unix/aarch64_linux.mk
 tar czf omd/packages/snap7/snap7-${SNAP7_VERSION}.tar.gz -C /tmp snap7-${SNAP7_VERSION}
 rm -rf /tmp/snap7-${SNAP7_VERSION}
+
+# setup pipenv
+bash buildscripts/infrastructure/build-nodes/scripts/install-pipenv.sh
 
 # compile and package
 make deb DEBFULLNAME="Martin Petersen" DEBEMAIL=martin@petersen20.de

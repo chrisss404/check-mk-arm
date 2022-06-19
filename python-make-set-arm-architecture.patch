@@ -1,15 +1,15 @@
---- omd/packages/Python3/Python3.make	2021-03-09 19:34:46.582476044 +0100
-+++ omd/packages/Python3/Python3.make_v2	2021-03-10 18:32:36.914162777 +0100
-@@ -55,10 +55,10 @@
+--- omd/packages/Python/Python.make	2022-05-26 01:02:30.000000000 +0100
++++ omd/packages/Python/Python.make_v2	2022-06-10 21:32:48.472505509 +0100
+@@ -56,10 +56,10 @@
  	done
  # Native modules built based on this version need to use the correct rpath
  	sed -i 's|--rpath,/omd/versions/[^/]*/lib|--rpath,$(OMD_ROOT)/lib|g' \
--	    $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
-+	    $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_arm-linux-gnueabihf.py
- 	LD_LIBRARY_PATH="$(PACKAGE_PYTHON3_LD_LIBRARY_PATH)" \
- 	    $(PACKAGE_PYTHON3_EXECUTABLE) -m py_compile \
--	    $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
-+	    $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_arm-linux-gnueabihf.py
- 	rm -r $(PACKAGE_PYTHON3_PYTHONPATH)/test
- 	$(TOUCH) $@
- 
+-	    $(PACKAGE_PYTHON_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
++	    $(PACKAGE_PYTHON_PYTHONPATH)/_sysconfigdata__linux_arm-linux-gnueabihf.py
+ 	LD_LIBRARY_PATH="$(PACKAGE_PYTHON_LD_LIBRARY_PATH)" \
+ 	    $(PACKAGE_PYTHON_EXECUTABLE) -m py_compile \
+-	    $(PACKAGE_PYTHON_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
++	    $(PACKAGE_PYTHON_PYTHONPATH)/_sysconfigdata__linux_arm-linux-gnueabihf.py
+ 	if [ -d "$(PACKAGE_PYTHON_PYTHONPATH)/test" ] ; then \
+ 	    $(RM) -r $(PACKAGE_PYTHON_PYTHONPATH)/test ; \
+ 	fi

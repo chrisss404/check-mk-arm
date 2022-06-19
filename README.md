@@ -32,7 +32,7 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Raspberry Pi OS (32-bit) Bullseye
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p25 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_armhf.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p2 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_armhf.deb) 
     dpkg -i check-mk-raw-*.bullseye_armhf.deb
     apt-get install -f
 
@@ -76,8 +76,9 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Raspberry Pi OS (32-bit)
 
+* Checkmk 2.1.0 for Raspberry Pi OS Bullseye: [2.1.0p2](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p2)
 * Checkmk 2.0.0 for Raspberry Pi OS Bullseye: [2.0.0p25](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p25)
-* Checkmk 2.0.0 for Raspberry Pi OS Buster: [2.0.0p17](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p17) (For more recent versions go to: [sergiodadi/check-mk-raspberry](https://github.com/sergiodadi/check-mk-raspberry))
+* Checkmk 2.0.0 for Raspberry Pi OS Buster: [2.0.0p17](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p17)
 * Checkmk 1.6.0 for Raspberry Pi OS Buster: [1.6.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.6.0p22)
 * Checkmk 1.5.0 for Raspberry Pi OS Buster: [1.5.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p22)
 * Checkmk 1.5.0 for Raspberry Pi OS Stretch: [1.5.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p20)
@@ -101,10 +102,10 @@ The following sections show how to download and install the DEB packages availab
 
 ### Build Checkmk from sources
 
-    # build a specific version of Checkmk targeting Bullseye, e.g.: 2.0.0p17
+    # build a specific version of Checkmk targeting Bullseye, e.g.: 2.1.0p2
     INSTALL_DEPENDENCIES=1 bash build_check_mk_bullseye32.sh <version>
 
-    # build a specific version of Checkmk targeting Groovy, e.g.: 2.0.0p20
+    # build a specific version of Checkmk targeting Groovy, e.g.: 2.1.0p2
     bash build_check_mk_groovy64.sh <version>
 
 ### Patches
@@ -126,29 +127,44 @@ The following sections show how to download and install the DEB packages availab
 
 #### Enable no-semantic-interposition compiler flag for python build
 
-    cp omd/packages/Python3/Python3.make omd/packages/Python3/Python3.make_v2
-    vim omd/packages/Python3/Python3.make_v2
-    +                CFLAGS="${CFLAGS} -fno-semantic-interposition" \
-    -                LDFLAGS="-Wl,--rpath,/omd/versions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/lib $(PACKAGE_OPENSSL_LDFLAGS)"
-    +                LDFLAGS="-Wl,--rpath,/omd/versions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/lib -fno-semantic-interposition $(PACKAGE_OPENSSL_LDFLAGS)"
-    diff -u omd/packages/Python3/Python3.make omd/packages/Python3/Python3.make_v2 > ../python-make-add-fno-semantic-interposition.patch
+    cp omd/packages/Python/Python.make omd/packages/Python/Python.make_v2
+    vim omd/packages/Python/Python.make_v2
+    +	        CFLAGS="${CFLAGS} -fno-semantic-interposition" \
+    -	        LDFLAGS="-Wl,--rpath,/omd/versions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/lib $(PACKAGE_OPENSSL_LDFLAGS)"
+    +	        LDFLAGS="-Wl,--rpath,/omd/versions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/lib -fno-semantic-interposition $(PACKAGE_OPENSSL_LDFLAGS)"
+    diff -u omd/packages/Python/Python.make omd/packages/Python/Python.make_v2 > ../python-make-add-fno-semantic-interposition.patch
 
 #### Set system architecture to aarch64 in python build
 
-    cp omd/packages/Python3/Python3.make omd/packages/Python3/Python3.make_v2
-    vim omd/packages/Python3/Python3.make_v2
-    -            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
-    +            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_aarch64-linux-gnu.py
-    -            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
-    +            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_aarch64-linux-gnu.py
-    diff -u omd/packages/Python3/Python3.make omd/packages/Python3/Python3.make_v2 > ../python-make-set-aarch64-architecture.patch
+    cp omd/packages/Python/Python.make omd/packages/Python/Python.make_v2
+    vim omd/packages/Python/Python.make_v2
+    -	    $(PACKAGE_PYTHON_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
+    +	    $(PACKAGE_PYTHON_PYTHONPATH)/_sysconfigdata__linux_aarch64-linux-gnu.py
+    -	    $(PACKAGE_PYTHON_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
+    +	    $(PACKAGE_PYTHON_PYTHONPATH)/_sysconfigdata__linux_aarch64-linux-gnu.py
+    diff -u omd/packages/Python/Python.make omd/packages/Python/Python.make_v2 > ../python-make-set-aarch64-architecture.patch
 
 #### Set system architecture to arm in python build
 
-    cp omd/packages/Python3/Python3.make omd/packages/Python3/Python3.make_v2
-    vim omd/packages/Python3/Python3.make_v2
-    -            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
-    +            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_arm-linux-gnueabihf.py
-    -            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
-    +            $(PACKAGE_PYTHON3_PYTHONPATH)/_sysconfigdata__linux_arm-linux-gnueabihf.py
-    diff -u omd/packages/Python3/Python3.make omd/packages/Python3/Python3.make_v2 > ../python-make-set-arm-architecture.patch
+    cp omd/packages/Python/Python.make omd/packages/Python/Python.make_v2
+    vim omd/packages/Python/Python.make_v2
+    -	    $(PACKAGE_PYTHON_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
+    +	    $(PACKAGE_PYTHON_PYTHONPATH)/_sysconfigdata__linux_arm-linux-gnueabihf.py
+    -	    $(PACKAGE_PYTHON_PYTHONPATH)/_sysconfigdata__linux_x86_64-linux-gnu.py
+    +	    $(PACKAGE_PYTHON_PYTHONPATH)/_sysconfigdata__linux_arm-linux-gnueabihf.py
+    diff -u omd/packages/Python/Python.make omd/packages/Python/Python.make_v2 > ../python-make-set-arm-architecture.patch
+
+#### Explicitly link against libatomic in protobuf build
+
+    cp omd/packages/protobuf/protobuf.make omd/packages/protobuf/protobuf.make_v2
+    vim omd/packages/protobuf/protobuf.make_v2
+    -	    echo -e '\nprotoc-static: $(protoc_OBJECTS) $(protoc_DEPENDENCIES) $(EXTRA_protoc_DEPENDENCIES)\n\tg++ -pthread -DHAVE_PTHREAD=1 -DHAVE_ZLIB=1 -Wall -Wno-sign-compare -static-libgcc -static-libstdc++ -s -o protoc google/protobuf/compiler/main.o -lpthread ./.libs/libprotoc.a ./.libs/libprotobuf.a' >> Makefile && \
+    +	    echo -e '\nprotoc-static: $(protoc_OBJECTS) $(protoc_DEPENDENCIES) $(EXTRA_protoc_DEPENDENCIES)\n\tg++ -pthread -DHAVE_PTHREAD=1 -DHAVE_ZLIB=1 -Wall -Wno-sign-compare -static-libgcc -static-libstdc++ -s -o protoc google/protobuf/compiler/main.o -lpthread ./.libs/libprotoc.a ./.libs/libprotobuf.a -latomic' >> Makefile && \
+    diff -u omd/packages/protobuf/protobuf.make omd/packages/protobuf/protobuf.make_v2 > ../protobuf-make-add-latomic.patch
+
+#### Remove playwright from pipfile
+
+    cp Pipfile Pipfile_v2
+    vim Pipfile_v2
+    -playwright = "==1.19.0"  # used for in-browser testing
+    diff -u Pipfile Pipfile_v2 > ../pipfile-remove-playwright.patch
