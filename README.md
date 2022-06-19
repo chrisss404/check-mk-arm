@@ -18,7 +18,7 @@ If your system is listed you can follow the instructions from section [Install C
 
 The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
 
-![Checkmk](https://raw.github.com/chrisss404/check-mk-arm/master/data/check_mk.png)
+![Checkmk](https://raw.github.com/chrisss404/check-mk-arm/2.0.0/data/check_mk.png)
 
 ### Recommended Configurations
 
