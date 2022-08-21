@@ -32,7 +32,7 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Raspberry Pi OS (32-bit) Bullseye
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p9 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_armhf.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p10 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_armhf.deb) 
     dpkg -i check-mk-raw-*.bullseye_armhf.deb
     apt-get install -f
 
@@ -76,7 +76,7 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Raspberry Pi OS (32-bit)
 
-* Checkmk 2.1.0 for Raspberry Pi OS Bullseye: [2.1.0p9](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p9)
+* Checkmk 2.1.0 for Raspberry Pi OS Bullseye: [2.1.0p10](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p10)
 * Checkmk 2.0.0 for Raspberry Pi OS Bullseye: [2.0.0p25](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p25)
 * Checkmk 2.0.0 for Raspberry Pi OS Buster: [2.0.0p17](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p17)
 * Checkmk 1.6.0 for Raspberry Pi OS Buster: [1.6.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.6.0p22)
@@ -161,6 +161,13 @@ The following sections show how to download and install the DEB packages availab
     -	    echo -e '\nprotoc-static: $(protoc_OBJECTS) $(protoc_DEPENDENCIES) $(EXTRA_protoc_DEPENDENCIES)\n\tg++ -pthread -DHAVE_PTHREAD=1 -DHAVE_ZLIB=1 -Wall -Wno-sign-compare -static-libgcc -static-libstdc++ -s -o protoc google/protobuf/compiler/main.o -lpthread ./.libs/libprotoc.a ./.libs/libprotobuf.a' >> Makefile && \
     +	    echo -e '\nprotoc-static: $(protoc_OBJECTS) $(protoc_DEPENDENCIES) $(EXTRA_protoc_DEPENDENCIES)\n\tg++ -pthread -DHAVE_PTHREAD=1 -DHAVE_ZLIB=1 -Wall -Wno-sign-compare -static-libgcc -static-libstdc++ -s -o protoc google/protobuf/compiler/main.o -lpthread ./.libs/libprotoc.a ./.libs/libprotobuf.a -latomic' >> Makefile && \
     diff -u omd/packages/protobuf/protobuf.make omd/packages/protobuf/protobuf.make_v2 > ../protobuf-make-add-latomic.patch
+
+#### Remove pbr from pipfile
+
+    cp Pipfile Pipfile_v2
+    vim Pipfile_v2
+    -pbr = "==5.4.4"  # needed by jira
+    diff -u Pipfile Pipfile_v2 > ../pipfile-remove-pbr.patch
 
 #### Remove playwright from pipfile
 

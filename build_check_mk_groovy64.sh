@@ -25,6 +25,7 @@ patch -p0 < ../omdlib-reduce-certificate-maximum-validity-period.patch
 patch -p0 < ../python-make-add-fno-semantic-interposition.patch
 patch -p0 < ../python-make-set-aarch64-architecture.patch
 patch -p0 < ../protobuf-make-add-latomic.patch
+patch -p0 < ../pipfile-remove-pbr.patch
 patch -p0 < ../pipfile-remove-playwright.patch
 
 touch agents/windows/check_mk.user.yml
