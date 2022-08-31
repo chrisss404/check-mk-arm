@@ -32,7 +32,7 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Raspberry Pi OS (32-bit) Bullseye
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p10 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_armhf.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p11 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_armhf.deb) 
     dpkg -i check-mk-raw-*.bullseye_armhf.deb
     apt-get install -f
 
@@ -76,7 +76,7 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Raspberry Pi OS (32-bit)
 
-* Checkmk 2.1.0 for Raspberry Pi OS Bullseye: [2.1.0p10](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p10)
+* Checkmk 2.1.0 for Raspberry Pi OS Bullseye: [2.1.0p11](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p11)
 * Checkmk 2.0.0 for Raspberry Pi OS Bullseye: [2.0.0p25](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p25)
 * Checkmk 2.0.0 for Raspberry Pi OS Buster: [2.0.0p17](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p17)
 * Checkmk 1.6.0 for Raspberry Pi OS Buster: [1.6.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.6.0p22)
