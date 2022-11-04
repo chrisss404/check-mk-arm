@@ -3,78 +3,60 @@
 
 On the [release](https://github.com/chrisss404/check-mk-arm/releases) page you can find deb packages targeting the following systems:
 
-* [Raspberry Pi OS (32-bit)](https://www.raspberrypi.org/downloads/raspberry-pi-os/) (formerly Raspbian) "Bullseye" on a RPi 3 and 4
+* [Raspberry Pi OS (32-bit)](https://www.raspberrypi.org/downloads/raspberry-pi-os/) (formerly Raspbian) "Bullseye"
  
-* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Jammy" on a RPi 4
-* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Focal" on a RPi 4
+* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Jammy"
+* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Focal"
 
-* [Debian (64-bit)](https://raspi.debian.net/tested/) "Bullseye" on a RPi 4
+* [Debian (64-bit)](https://raspi.debian.net/tested/) "Bullseye"
 
-* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Impish" on a RPi 4 (EOL / last version will be 2.0.0.p25)
-* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Hirsute" on a RPi 4 (EOL / last version will be 2.0.0.p20)
-* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Groovy" on a RPi 4 (EOL / last version will be 2.0.0.p16)
+* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Impish" (EOL / last version will be 2.0.0.p25)
+* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Hirsute" (EOL / last version will be 2.0.0.p20)
+* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Groovy" (EOL / last version will be 2.0.0.p16)
 
 
 ##### The builds for Focal and Groovy are untested !
 ##### The build for Bullseye arm64 is untested !
 
-If your system is listed you can follow the instructions from section [Install Checkmk to your RPi](#install-checkmk-to-your-rpi), otherwise please refer to section [Build Checkmk from sources](#build-checkmk-from-sources) to compile a package for your system.
+If your system is listed you can follow the instructions from section [Install Checkmk to your device](#install-checkmk-to-your-device), otherwise please refer to section [Build Checkmk from sources](#build-checkmk-from-sources) to compile a package for your system.
 
 The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
 
 ![Checkmk](https://raw.github.com/chrisss404/check-mk-arm/master/data/check_mk.png)
 
-### Recommended Configurations
+### Recommended configurations when running on a RPi
 
 ##### Reduce the number of apache processes
 
 Go to `Setup` > `General` > `Global settings` > `Site Management` and reduce the number at `Apache process tuning` to 5.
 
-### Install Checkmk to your RPi
+### Install Checkmk to your device
 
-The following sections show how to download and install the DEB packages available from this repo. After the installation you could follow the [official user guide](https://docs.checkmk.com/latest/en/) to set it up and start your monitoring journey.
+The following sections show how to download and install the DEB packages available from this repo. After the installation you can follow the [official user guide](https://docs.checkmk.com/latest/en/) to set it up and start your monitoring journey.
 
 ##### Raspberry Pi OS (32-bit) Bullseye
 
     curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p15 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_armhf.deb) 
     dpkg -i check-mk-raw-*.bullseye_armhf.deb
-    apt-get install -f
+    apt-get update && apt-get install -f
 
 ##### Ubuntu (64-bit) Jammy
 
     curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p15 | grep browser_download_url | cut -d '"' -f 4 | grep jammy_arm64.deb) 
     dpkg -i check-mk-raw-*.jammy_arm64.deb
-    apt-get install -f
+    apt-get update && apt-get install -f
     
 ##### Ubuntu (64-bit) Focal
 
     curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p15 | grep browser_download_url | cut -d '"' -f 4 | grep focal_arm64.deb) 
     dpkg -i check-mk-raw-*.focal_arm64.deb
-    apt-get install -f
-
-##### Ubuntu (64-bit) Impish
-
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p25 | grep browser_download_url | cut -d '"' -f 4 | grep impish_arm64.deb) 
-    dpkg -i check-mk-raw-*.impish_arm64.deb
-    apt-get install -f
-
-##### Ubuntu (64-bit) Hirsute
-
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p20 | grep browser_download_url | cut -d '"' -f 4 | grep hirsute_arm64.deb) 
-    dpkg -i check-mk-raw-*.hirsute_arm64.deb
-    apt-get install -f
-    
-##### Ubuntu (64-bit) Groovy
-
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.0.0p16 | grep browser_download_url | cut -d '"' -f 4 | grep groovy_arm64.deb) 
-    dpkg -i check-mk-raw-*.groovy_arm64.deb
-    apt-get install -f
+    apt-get update && apt-get install -f
 
 ##### Debian (64-bit) Bullseye
 
     curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p15 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_arm64.deb) 
     dpkg -i check-mk-raw-*.bullseye_arm64.deb
-    apt-get install -f
+    apt-get update && apt-get install -f
     
 ### Package overview
 
@@ -106,11 +88,11 @@ The following sections show how to download and install the DEB packages availab
 
 ### Build Checkmk from sources
 
-    # build a specific version of Checkmk targeting Bullseye, e.g.: 2.1.0p2
-    INSTALL_DEPENDENCIES=1 bash build_check_mk_bullseye32.sh <version>
+    # build a specific version of Checkmk targeting Debian 32-bit, e.g.: 2.1.0p15
+    INSTALL_DEPENDENCIES=1 bash build_check_mk_debian_32bit.sh <version>
 
-    # build a specific version of Checkmk targeting Groovy, e.g.: 2.1.0p2
-    bash build_check_mk_groovy64.sh <version>
+    # build a specific version of Checkmk targeting Ubuntu 64-bit, e.g.: 2.1.0p15
+    INSTALL_DEPENDENCIES=1 bash build_check_mk_ubuntu_64bit.sh <version>
 
 ### Patches
 
