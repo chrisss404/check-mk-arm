@@ -58,19 +58,19 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Ubuntu (64-bit) Jammy
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p20 | grep browser_download_url | cut -d '"' -f 4 | grep jammy_arm64.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p21 | grep browser_download_url | cut -d '"' -f 4 | grep jammy_arm64.deb) 
     dpkg -i check-mk-raw-*.jammy_arm64.deb
     apt-get update && apt-get install -f
     
 ##### Ubuntu (64-bit) Focal
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p20 | grep browser_download_url | cut -d '"' -f 4 | grep focal_arm64.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p21 | grep browser_download_url | cut -d '"' -f 4 | grep focal_arm64.deb) 
     dpkg -i check-mk-raw-*.focal_arm64.deb
     apt-get update && apt-get install -f
 
 ##### Debian (64-bit) Bullseye
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p20 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_arm64.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p21 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_arm64.deb) 
     dpkg -i check-mk-raw-*.bullseye_arm64.deb
     apt-get update && apt-get install -f
     
@@ -88,8 +88,8 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Ubuntu (64-bit)
 
-* Checkmk 2.1.0 for Ubuntu 22.04 Jammy: [2.1.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p20)
-* Checkmk 2.1.0 for Ubuntu 20.04 Focal: [2.1.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p20)
+* Checkmk 2.1.0 for Ubuntu 22.04 Jammy: [2.1.0p21](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p21)
+* Checkmk 2.1.0 for Ubuntu 20.04 Focal: [2.1.0p21](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p21)
 
 * Checkmk 2.0.0 for Ubuntu 21.10 Impish: [2.0.0p25](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p25)
 * Checkmk 2.0.0 for Ubuntu 21.04 Hirsute: [2.0.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p20)
@@ -97,7 +97,7 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Debian (64-bit)
 
-* Checkmk 2.1.0 for Debian Bullseye: [2.1.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p20)
+* Checkmk 2.1.0 for Debian Bullseye: [2.1.0p21](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p21)
 
 ### Build Checkmk from sources
 
