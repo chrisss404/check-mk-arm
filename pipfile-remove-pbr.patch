@@ -1,11 +1,10 @@
---- Pipfile     2022-08-21 08:56:09.064859847 +0100
-+++ Pipfile_v2  2022-08-21 13:30:53.027364237 +0100
-@@ -92,7 +92,6 @@
+--- Pipfile     2023-01-29 01:10:00.000000000 +0000
++++ Pipfile_v2  2023-02-11 13:49:01.281257851 +0000
+@@ -93,7 +93,6 @@
  chardet = "==4.0.0"  # needed by requests
  urllib3 = "==1.26.7"  # needed by requests
  pyOpenSSL = "==19.1.0"  # needed by requests with extras = ["security"]
--pbr = "==5.4.4"  # needed by jira
+-pbr = "==5.10.0"  # needed by jira
  pyghmi = "==1.5.13"  # needed by base for IPMI
- requests = {version = "==2.27.0",extras = ["security"]}  # needed by DCD, connexion
+ requests = {version = "==2.28.1",extras = ["security"]}  # needed by DCD, connexion
  pykerberos = "==1.2.1"  # needed by check_bi_aggr
-

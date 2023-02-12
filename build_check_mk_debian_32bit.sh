@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CHECKMK_VERSION="2.1.0p15"
+CHECKMK_VERSION="2.1.0p21"
 SNAP7_VERSION="1.4.2"
 
 if [ $# -gt 0 ]; then
@@ -32,7 +32,6 @@ cd check-mk-raw-${CHECKMK_VERSION}.cre
 
 # apply patches
 patch -p0 < ../omd-Makefile-remove-module-navicli.patch
-patch -p0 < ../omdlib-reduce-certificate-maximum-validity-period.patch
 patch -p0 < ../python-make-add-fno-semantic-interposition.patch
 patch -p0 < ../python-make-set-arm-architecture.patch
 patch -p0 < ../protobuf-make-add-latomic.patch
