@@ -1,5 +1,9 @@
 
-## Arm builds of Checkmk
+## Vote for ARM support
+
+If Checkmk for ARM is useful to you, please consider voting for this feature request: https://features.checkmk.com/suggestions/297317/arm-support-for-the-cee-and-cme
+
+## ARM builds of Checkmk
 
 On the [release](https://github.com/chrisss404/check-mk-arm/releases) page you can find deb packages targeting the following systems:
 
@@ -11,7 +15,6 @@ On the [release](https://github.com/chrisss404/check-mk-arm/releases) page you c
 * [Debian (64-bit)](https://raspi.debian.net/tested/) "Bullseye"
 
 * [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Impish" (EOL / last version will be 2.0.0.p25)
-
 
 ##### The builds for Focal and Groovy are untested !
 ##### The build for Bullseye arm64 is untested !
@@ -52,7 +55,7 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Raspberry Pi OS (32-bit) Bullseye
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p25 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_armhf.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p26 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_armhf.deb) 
     dpkg -i check-mk-raw-*.bullseye_armhf.deb
     apt-get update && apt-get install -f
 
@@ -78,7 +81,7 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Raspberry Pi OS (32-bit)
 
-* Checkmk 2.1.0 for Raspberry Pi OS Bullseye: [2.1.0p25](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p25)
+* Checkmk 2.1.0 for Raspberry Pi OS Bullseye: [2.1.0p26](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p26)
 * Checkmk 2.0.0 for Raspberry Pi OS Bullseye: [2.0.0p25](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p25)
 * Checkmk 2.0.0 for Raspberry Pi OS Buster: [2.0.0p17](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p17)
 * Checkmk 1.6.0 for Raspberry Pi OS Buster: [1.6.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.6.0p22)
