@@ -1,3 +1,7 @@
+## DRAFT / Prerelease of checkmk 2.2.0
+There are a lot of changes in the build prozess for checkmk 2.2.0. The complete automation process still lecks some steps, but with some minor manual steps it works. One disadvantage is, that the new build process is much longer than before.
+This is the first version of the 2.2.0 version for jammy and it is still untested.
+I will complete the build process and upload the new environment in the near future.
 
 ## Vote for ARM support
 
