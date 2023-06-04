@@ -1,8 +1,3 @@
-## DRAFT / Prerelease of checkmk 2.2.0
-There are a lot of changes in the build prozess for checkmk 2.2.0. The complete automation process still lecks some steps, but with some minor manual steps it works. One disadvantage is, that the new build process is much longer than before.
-This is the first version of the 2.2.0 version for jammy and it is still untested.
-I will complete the build process and upload the new environment in the near future.
-
 ## Vote for ARM support
 
 If Checkmk for ARM is useful to you, please consider voting for this feature request: https://features.checkmk.com/suggestions/297317/arm-support-for-the-cee-and-cme
@@ -65,7 +60,7 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Ubuntu (64-bit) Jammy
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p28 | grep browser_download_url | cut -d '"' -f 4 | grep jammy_arm64.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.2.0p1 | grep browser_download_url | cut -d '"' -f 4 | grep jammy_arm64.deb) 
     dpkg -i check-mk-raw-*.jammy_arm64.deb
     apt-get update && apt-get install -f
     
@@ -95,7 +90,8 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Ubuntu (64-bit)
 
-* Checkmk 2.1.0 for Ubuntu 22.04 Jammy: [2.1.0p28](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p28)
+* Checkmk 2.2.0 for Ubuntu 22.04 Jammy: [2.2.0p1](https://github.com/chrisss404/check-mk-arm/releases/tag/2.2.0p1)
+
 * Checkmk 2.1.0 for Ubuntu 20.04 Focal: [2.1.0p28](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p28)
 
 * Checkmk 2.0.0 for Ubuntu 21.10 Impish: [2.0.0p25](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p25)
@@ -169,3 +165,5 @@ The following sections show how to download and install the DEB packages availab
     vim Pipfile_v2
     -playwright = "==1.19.0"  # used for in-browser testing
     diff -u Pipfile Pipfile_v2 > ../pipfile-remove-playwright.patch
+#### FOR 2.2.0: Get bazel
+The build of checkmk 2.2.0 needs a new tool named bazel. It can be downloaded from https://github.com/bazelbuild/bazel/releases/download/5.3.2/ .
