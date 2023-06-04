@@ -1,6 +1,6 @@
---- omd/packages/protobuf/protobuf.make	2022-05-26 01:02:30.000000000 +0100
-+++ omd/packages/protobuf/protobuf.make_v2	2022-06-11 19:14:37.049881665 +0100
-@@ -63,7 +63,7 @@
+--- omd/packages/protobuf/protobuf.make	2023-05-12 01:02:22.000000000 +0200
++++ omd/packages/protobuf/protobuf.make_v2	2023-06-02 18:45:49.724316298 +0200
+@@ -65,7 +65,7 @@
  	    `: Let me know in case you got a cleaner approach. ` \
  	    cd src && \
  	    rm protoc && \

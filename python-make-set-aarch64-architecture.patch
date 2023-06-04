@@ -1,11 +1,11 @@
---- omd/packages/Python/Python.make	2023-02-11 13:16:52.925978135 +0000
-+++ omd/packages/Python/Python.make_v2	2023-02-11 13:23:00.204044150 +0000
+--- omd/packages/Python/Python.make_orig        2023-02-11 18:52:13.929972339 +0100
++++ omd/packages/Python/Python.make     2023-02-11 18:52:41.165361333 +0100
 @@ -12,7 +12,7 @@
  PYTHON_INTERMEDIATE_INSTALL := $(BUILD_HELPER_DIR)/$(PYTHON_DIR)-install-intermediate
  PYTHON_CACHE_PKG_PROCESS := $(BUILD_HELPER_DIR)/$(PYTHON_DIR)-cache-pkg-process
  PYTHON_INSTALL := $(BUILD_HELPER_DIR)/$(PYTHON_DIR)-install
 -PYTHON_SYSCONFIGDATA := _sysconfigdata__linux_x86_64-linux-gnu.py
 +PYTHON_SYSCONFIGDATA := _sysconfigdata__linux_aarch64-linux-gnu.py
-
+ 
  PYTHON_INSTALL_DIR := $(INTERMEDIATE_INSTALL_BASE)/$(PYTHON_DIR)
  PYTHON_BUILD_DIR := $(PACKAGE_BUILD_DIR)/$(PYTHON_DIR)

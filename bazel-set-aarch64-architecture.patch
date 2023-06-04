@@ -1,0 +1,15 @@
+--- scripts/run-bazel-build.sh  2023-05-12 01:02:22.000000000 +0200
++++ scripts/run-bazel-build.sh_v2       2023-05-28 17:07:49.868227060 +0200
+@@ -21,10 +21,9 @@
+     "${ROOT_DIR}"/scripts/run-pipenv run \
+         "${ROOT_DIR}"/scripts/create_build_environment_variables.py \
+         "eval:os-release-name:cat /etc/os-release | grep PRETTY | cut -d '\"' -f2" \
+-        "pathhash:/usr/lib/x86_64-linux-gnu/libc.so" \
+-        "pathhash:/lib64/libc.so.6" \
+-        "pathhash:/usr/lib64/libc.so" \
+-        "pathhash:/opt/gcc-12.2.0" \
++       "pathhash:/usr/lib/aarch64-linux-gnu/libc.so" \
++        "pathhash:/usr/lib/aarch64-linux-gnu/libc.so.6" \
++        "pathhash:/usr/lib/gcc/aarch64-linux-gnu/12" \
+         "env:PATH:/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ )"

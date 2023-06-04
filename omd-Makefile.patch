@@ -1,0 +1,18 @@
+--- omd/Makefile	2023-05-12 01:02:21.000000000 +0200
++++ omd/Makefile_v2	2023-06-01 21:15:31.900510125 +0200
+@@ -45,7 +45,6 @@
+     nagvis \
+     nrpe \
+     omd \
+-    navicli \
+     pnp4nagios \
+     maintenance \
+     patch \
+@@ -298,6 +297,7 @@
+ 	    --preserve-envvar="BAZEL_*" \
+ 	    --preserve-envvar="MAKE" \
+ 	    --preserve-envvar="PYTHON_ENABLE_OPTIMIZATIONS" \
++            --preserve-envvar="USE_EXTERNAL_PIPENV_MIRROR" \
+ 	    --prepend-path $$HOME/.cargo/bin \
+ 	    --prepend-path=/usr/local/bin \
+ 	    --set-envvar EDITION=$(EDITION) \

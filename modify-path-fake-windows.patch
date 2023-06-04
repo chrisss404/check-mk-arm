@@ -1,0 +1,10 @@
+--- scripts/fake-windows-artifacts      2023-05-12 01:02:22.000000000 +0200
++++ scripts/fake-windows-artifacts_v2   2023-05-29 16:46:28.085846677 +0200
+@@ -3,7 +3,7 @@
+ # This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
+ # conditions defined in the file COPYING, which is part of this source code package.
+ 
+-REPO_PATH="$(git rev-parse --show-toplevel)"
++REPO_PATH="."
+ 
+ agents_windows="agents/windows"
