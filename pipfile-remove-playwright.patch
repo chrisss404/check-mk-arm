@@ -1,10 +1,10 @@
---- Pipfile     2023-01-29 01:10:00.000000000 +0000
-+++ Pipfile_v2  2023-02-11 13:50:02.480665810 +0000
-@@ -36,7 +36,6 @@
- types-redis = "==4.1.15"  # used for type checking
- types-protobuf = "==3.19.12"  # used for type checking
- types-setuptools = "==57.4.9"  # used for type checking
--playwright = "==1.19.0"  # used for in-browser testing
- pydantic-factories = "==1.2.4"  # used for pydantic model testing
- pymongo = "==4.0.1"  # used by mk_mongodb agent plugin
- pytest = "==7.0.1"  # used by various test/Makefile targets
+--- Pipfile	2023-05-12 00:02:21.000000000 +0100
++++ Pipfile_v2	2023-06-09 09:22:34.125378189 +0100
+@@ -37,7 +37,6 @@
+ types-setuptools = "==67.2.0.0"  # used for type checking
+ types-pyOpenSSL = "==23.0.0.0"  # used for type checking
+ types-waitress = "==2.1.4.4"  # used for type checking
+-playwright = "==1.30.0"  # used for in-browser testing
+ pydantic-factories = "==1.17.1"  # used for pydantic model testing;
+ pymongo = "==4.3.3"  # used by mk_mongodb agent plugin
+ pytest = "==7.2.1"  # used by various test/Makefile targets

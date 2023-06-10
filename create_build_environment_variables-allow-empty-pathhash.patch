@@ -1,0 +1,14 @@
+--- scripts/create_build_environment_variables.py	2023-05-12 00:02:22.000000000 +0100
++++ scripts/create_build_environment_variables.py_v2	2023-06-09 09:11:01.358209808 +0100
+@@ -71,11 +71,6 @@
+         for op, path in (e.split(":", 1),)
+         if op == "pathhash"
+     ]
+-    if checksums and all(v == "--" for k, v in checksums):
+-        raise RuntimeError(
+-            "All provided 'pathhash' items result in emtpy hashes."
+-            " This is considerd to be an error."
+-        )
+ 
+     evals = [
+         (f"eval:{name}", cmd_out(expr).strip())

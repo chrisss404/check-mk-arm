@@ -7,17 +7,14 @@ If Checkmk for ARM is useful to you, please consider voting for this feature req
 
 On the [release](https://github.com/chrisss404/check-mk-arm/releases) page you can find deb packages targeting the following systems:
 
-* [Raspberry Pi OS (32-bit)](https://www.raspberrypi.org/downloads/raspberry-pi-os/) (formerly Raspbian) "Bullseye"
+* [Raspberry Pi OS (32-bit)](https://www.raspberrypi.org/downloads/raspberry-pi-os/) (formerly Raspbian) "Bullseye" (2.2.0 will be the last supported major version)
  
 * [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Jammy"
 * [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Focal"
 
 * [Debian (64-bit)](https://raspi.debian.net/tested/) "Bullseye"
 
-* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Impish" (EOL / last version will be 2.0.0.p25)
-
-##### The builds for Focal and Groovy are untested !
-##### The build for Bullseye arm64 is untested !
+##### The builds for Focal and Bullseye arm64 are untested !
 
 If your system is listed you can follow the instructions from section [Install Checkmk to your device](#install-checkmk-to-your-device), otherwise please refer to section [Build Checkmk from sources](#build-checkmk-from-sources) to compile a package for your system.
 
@@ -55,13 +52,13 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Raspberry Pi OS (32-bit) Bullseye
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p28 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_armhf.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.2.0p1 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_armhf.deb) 
     dpkg -i check-mk-raw-*.bullseye_armhf.deb
     apt-get update && apt-get install -f
 
 ##### Ubuntu (64-bit) Jammy
 
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.1.0p28 | grep browser_download_url | cut -d '"' -f 4 | grep jammy_arm64.deb) 
+    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.2.0p1 | grep browser_download_url | cut -d '"' -f 4 | grep jammy_arm64.deb) 
     dpkg -i check-mk-raw-*.jammy_arm64.deb
     apt-get update && apt-get install -f
     
@@ -81,6 +78,7 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Raspberry Pi OS (32-bit)
 
+* Checkmk 2.2.0 for Raspberry Pi OS Bullseye: [2.2.0p1](https://github.com/chrisss404/check-mk-arm/releases/tag/2.2.0p1)
 * Checkmk 2.1.0 for Raspberry Pi OS Bullseye: [2.1.0p28](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p28)
 * Checkmk 2.0.0 for Raspberry Pi OS Bullseye: [2.0.0p25](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p25)
 * Checkmk 2.0.0 for Raspberry Pi OS Buster: [2.0.0p17](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p17)
@@ -91,6 +89,7 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Ubuntu (64-bit)
 
+* Checkmk 2.2.0 for Ubuntu 22.04 Jammy: [2.2.0p1](https://github.com/chrisss404/check-mk-arm/releases/tag/2.2.0p1)
 * Checkmk 2.1.0 for Ubuntu 22.04 Jammy: [2.1.0p28](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p28)
 * Checkmk 2.1.0 for Ubuntu 20.04 Focal: [2.1.0p28](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p28)
 
@@ -104,13 +103,65 @@ The following sections show how to download and install the DEB packages availab
 
 ### Build Checkmk from sources
 
-    # build a specific version of Checkmk targeting Debian 32-bit, e.g.: 2.1.0p21
+    # build a specific version of Checkmk targeting Debian 32-bit, e.g.: 2.2.0p1
     INSTALL_DEPENDENCIES=1 bash build_check_mk_debian_32bit.sh <version>
 
     # build a specific version of Checkmk targeting Ubuntu 64-bit, e.g.: 2.1.0p21
     INSTALL_DEPENDENCIES=1 bash build_check_mk_ubuntu_64bit.sh <version>
 
 ### Patches
+
+#### Allow empty pathhash items
+
+    cp scripts/create_build_environment_variables.py scripts/create_build_environment_variables.py_v2
+    vim scripts/create_build_environment_variables.py_v2
+    -    if checksums and all(v == "--" for k, v in checksums):
+    -        raise RuntimeError(
+    -            "All provided 'pathhash' items result in emtpy hashes."
+    -            " This is considerd to be an error."
+    -        )
+    diff -u scripts/create_build_environment_variables.py scripts/create_build_environment_variables.py_v2 > ../create_build_environment_variables-allow-empty-pathhash.patch
+
+#### Use official python mirror
+
+    cp defines.make defines.make_v2
+    vim defines.make_v2
+    -# By default our internal Python mirror is used.
+    -# To use the official Python mirror, please export `USE_EXTERNAL_PIPENV_MIRROR=true`.
+    -EXTERNAL_PYPI_MIRROR := https://pypi.python.org/simple
+    -INTERNAL_PYPI_MIRROR :=  https://devpi.lan.tribe29.com/root/pypi
+    -
+    -ifeq (true,${USE_EXTERNAL_PIPENV_MIRROR})
+    -PIPENV_PYPI_MIRROR  := $(EXTERNAL_PYPI_MIRROR)
+    -else
+    -PIPENV_PYPI_MIRROR  := $(INTERNAL_PYPI_MIRROR)
+    -endif
+    +PIPENV_PYPI_MIRROR := https://pypi.python.org/simple
+    diff -u defines.make defines.make_v2 > ../defines.make-use-official-python-mirror.patch
+
+#### Fix path in fake windows artifacts script
+
+    cp scripts/fake-windows-artifacts scripts/fake-windows-artifacts_v2
+    vim scripts/fake-windows-artifacts_v2
+    -REPO_PATH="$(git rev-parse --show-toplevel)"
+    +REPO_PATH="$(pwd)"
+    diff -u scripts/fake-windows-artifacts scripts/fake-windows-artifacts_v2 > ../fake-windows-artifacts-fix-path.patch
+
+#### Fix heirloom-mailx source url
+
+    cp omd/packages/heirloom-mailx/heirloom-mailx_http.bzl omd/packages/heirloom-mailx/heirloom-mailx_http.bzl_v2
+    vim omd/packages/heirloom-mailx/heirloom-mailx_http.bzl_v2
+    -            "https://ftp.debian.org/debian/pool/main/h/heirloom-mailx/heirloom-mailx_" + HEIRLOOMMAILX_VERSION + ".orig.tar.gz",
+    -            "https://artifacts.lan.tribe29.com/repository/upstream-archives/heirloom-mailx_" + HEIRLOOMMAILX_VERSION + ".orig.tar.gz",
+    +            "http://archive.ubuntu.com/ubuntu/pool/universe/h/heirloom-mailx/heirloom-mailx_" + HEIRLOOMMAILX_VERSION + ".orig.tar.gz",
+    diff -u omd/packages/heirloom-mailx/heirloom-mailx_http.bzl omd/packages/heirloom-mailx/heirloom-mailx_http.bzl_v2 > ../heirloom-mailx-fix-source-url.patch
+
+#### Reduce webpack memory consumption
+
+    cp Makefile Makefile_v2
+    vim Makefile_v2
+    +.ran-webpack: export NODE_OPTIONS := --max-old-space-size=2048
+    diff -u Makefile Makefile_v2 > ../Makefile-reduce-webpack-memory-consumption.patch
 
 #### Remove module navicli
 
@@ -156,12 +207,12 @@ The following sections show how to download and install the DEB packages availab
 
     cp Pipfile Pipfile_v2
     vim Pipfile_v2
-    -pbr = "==5.10.0"  # needed by jira
+    -pbr = "==5.11.0"  # needed by jira
     diff -u Pipfile Pipfile_v2 > ../pipfile-remove-pbr.patch
 
 #### Remove playwright from pipfile
 
     cp Pipfile Pipfile_v2
     vim Pipfile_v2
-    -playwright = "==1.19.0"  # used for in-browser testing
+    -playwright = "==1.30.0"  # used for in-browser testing
     diff -u Pipfile Pipfile_v2 > ../pipfile-remove-playwright.patch

@@ -1,9 +1,9 @@
---- omd/Makefile	2023-01-29 01:10:01.000000000 +0000
-+++ omd/Makefile_v2	2023-02-11 17:13:36.339664589 +0000
-@@ -48,7 +48,6 @@
-     nsca \
+--- omd/Makefile	2023-05-12 00:02:21.000000000 +0100
++++ omd/Makefile_v2	2023-06-09 09:16:01.097015535 +0100
+@@ -45,7 +45,6 @@
+     nagvis \
+     nrpe \
      omd \
-     openhardwaremonitor \
 -    navicli \
      pnp4nagios \
      maintenance \

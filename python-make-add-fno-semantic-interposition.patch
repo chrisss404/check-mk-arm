@@ -1,6 +1,6 @@
---- omd/packages/Python/Python.make	2022-05-26 01:02:30.000000000 +0100
-+++ omd/packages/Python/Python.make_v2	2022-06-10 21:31:45.732838310 +0100
-@@ -83,7 +83,8 @@
+--- omd/packages/Python/Python.make	2023-05-12 00:02:21.000000000 +0100
++++ omd/packages/Python/Python.make_v2	2023-06-09 09:17:50.516565773 +0100
+@@ -92,7 +92,8 @@
  	        --with-ensurepip=install \
  	        --with-openssl=$(PACKAGE_OPENSSL_DESTDIR) \
  	        $(PYTHON_ENABLE_OPTIMIZATIONS) \
