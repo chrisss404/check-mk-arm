@@ -217,3 +217,12 @@ The following sections show how to download and install the DEB packages availab
     vim Pipfile_v2
     -playwright = "==1.30.0"  # used for in-browser testing
     diff -u Pipfile Pipfile_v2 > ../pipfile-remove-playwright.patch
+
+#### Remove werkv2 markdown imports
+
+    cp cmk/utils/werks/werkv2.py cmk/utils/werks/werkv2.py_v2
+    vim cmk/utils/werks/werkv2.py_v2
+    -import markdown
+    -from markdown.extensions import Extension
+    -from markdown.treeprocessors import Treeprocessor
+    diff -u cmk/utils/werks/werkv2.py cmk/utils/werks/werkv2.py_v2 > ../werkv2-remove-markdown-imports.patch

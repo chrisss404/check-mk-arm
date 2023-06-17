@@ -54,6 +54,7 @@ patch -p0 < ../python-make-set-arm-architecture.patch
 patch -p0 < ../protobuf-make-add-latomic.patch
 patch -p0 < ../pipfile-remove-pbr.patch
 patch -p0 < ../pipfile-remove-playwright.patch
+patch -p0 < ../werkv2-remove-markdown-imports.patch
 
 # skip build of windows artifacts
 bash scripts/fake-windows-artifacts

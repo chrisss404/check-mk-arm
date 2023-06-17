@@ -1,0 +1,11 @@
+--- cmk/utils/werks/werkv2.py	2023-06-12 00:02:19.000000000 +0100
++++ cmk/utils/werks/werkv2.py_v2	2023-06-17 14:19:20.618181386 +0100
+@@ -7,9 +7,6 @@
+ from pathlib import Path
+ from typing import Any, Literal
+
+-import markdown
+-from markdown.extensions import Extension
+-from markdown.treeprocessors import Treeprocessor
+ from pydantic import BaseModel, Field, validator
+ from pydantic.error_wrappers import ValidationError
