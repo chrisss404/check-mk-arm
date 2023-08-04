@@ -1,0 +1,10 @@
+--- Pipfile     2023-07-19 10:27:00.000000000 +0100
++++ Pipfile_v2  2023-08-03 20:47:04.074867414 +0100
+@@ -145,7 +145,6 @@
+ s3transfer = "==0.4.2"  # needed by boto3 (aws)
+ boto3 = "==1.17.102"  # needed by boto3 (aws)
+ python-snap7 = "==1.2"  # needed by Siemens PLC special agent
+-pymssql = "==2.2.7"  # needed by check_sql active check
+ PyMySQL = "==0.9.3"  # needed by check_sql active check
+ psycopg2-binary = "==2.9.5"  # needed by check_sql active check
+ apispec = "==5.2.2"  # direct dependency

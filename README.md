@@ -219,6 +219,13 @@ The following sections show how to download and install the DEB packages availab
     -playwright = "==1.30.0"  # used for in-browser testing
     diff -u Pipfile Pipfile_v2 > ../pipfile-remove-playwright.patch
 
+#### Remove pymssql from pipfile
+
+    cp Pipfile Pipfile_v2
+    vim Pipfile_v2
+    -pymssql = "==2.2.7"  # needed by check_sql active check
+    diff -u Pipfile Pipfile_v2 > ../pipfile-remove-pymssql.patch
+
 #### Remove werkv2 markdown imports
 
     cp cmk/utils/werks/werkv2.py cmk/utils/werks/werkv2.py_v2
@@ -227,3 +234,12 @@ The following sections show how to download and install the DEB packages availab
     -from markdown.extensions import Extension
     -from markdown.treeprocessors import Treeprocessor
     diff -u cmk/utils/werks/werkv2.py cmk/utils/werks/werkv2.py_v2 > ../werkv2-remove-markdown-imports.patch
+
+#### Fix xmlsec1 source url
+
+    cp omd/packages/xmlsec1/xmlsec1_http.bzl omd/packages/xmlsec1/xmlsec1_http.bzl_v2
+    vim omd/packages/xmlsec1/xmlsec1_http.bzl_v2
+    -            "https://www.aleksey.com/xmlsec/download/xmlsec1-" + XMLSEC1_VERSION + ".tar.gz",
+    -            "https://artifacts.lan.tribe29.com/repository/upstream-archives/xmlsec1-" + XMLSEC1_VERSION + ".tar.gz",
+    +            "https://www.aleksey.com/xmlsec/download/older-releases/xmlsec1-" + XMLSEC1_VERSION + ".tar.gz",
+    diff -u omd/packages/xmlsec1/xmlsec1_http.bzl omd/packages/xmlsec1/xmlsec1_http.bzl_v2 > ../xmlsec1-fix-source-url.patch

@@ -1,0 +1,12 @@
+--- omd/packages/xmlsec1/xmlsec1_http.bzl       2023-07-13 00:02:41.000000000 +0100
++++ omd/packages/xmlsec1/xmlsec1_http.bzl_v2    2023-08-03 20:49:58.704118095 +0100
+@@ -6,8 +6,7 @@
+     http_archive(
+         name = "xmlsec1",
+         urls = [
+-            "https://www.aleksey.com/xmlsec/download/xmlsec1-" + XMLSEC1_VERSION + ".tar.gz",
+-            "https://artifacts.lan.tribe29.com/repository/upstream-archives/xmlsec1-" + XMLSEC1_VERSION + ".tar.gz",
++            "https://www.aleksey.com/xmlsec/download/older-releases/xmlsec1-" + XMLSEC1_VERSION + ".tar.gz",
+         ],
+         sha256 = "5f8dfbcb6d1e56bddd0b5ec2e00a3d0ca5342a9f57c24dffde5c796b2be2871c",
+         build_file = "@omd_packages//packages/xmlsec1:BUILD.xmlsec1",
