@@ -141,14 +141,6 @@ The following sections show how to download and install the DEB packages availab
     +PIPENV_PYPI_MIRROR := https://pypi.python.org/simple
     diff -u defines.make defines.make_v2 > ../defines.make-use-official-python-mirror.patch
 
-#### Fix path in fake windows artifacts script
-
-    cp scripts/fake-windows-artifacts scripts/fake-windows-artifacts_v2
-    vim scripts/fake-windows-artifacts_v2
-    -REPO_PATH="$(git rev-parse --show-toplevel)"
-    +REPO_PATH="$(pwd)"
-    diff -u scripts/fake-windows-artifacts scripts/fake-windows-artifacts_v2 > ../fake-windows-artifacts-fix-path.patch
-
 #### Fix heirloom-mailx source url
 
     cp omd/packages/heirloom-mailx/heirloom-mailx_http.bzl omd/packages/heirloom-mailx/heirloom-mailx_http.bzl_v2

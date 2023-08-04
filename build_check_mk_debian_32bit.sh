@@ -28,12 +28,16 @@ if [ ${INSTALL_DEPENDENCIES:-0} -eq 1 ]; then
         libfreeradius-dev libgd-dev libglib2.0-dev libgnutls28-dev libgsf-1-dev libkrb5-dev libmcrypt-dev \
         libncurses-dev libpango1.0-dev libpcap-dev libperl-dev libpq-dev libreadline-dev librrd-dev libsasl2-dev \
         libsodium-dev libsqlite3-dev libssl-dev libxml2-dev libxmlsec1-dev nodejs openjdk-11-jdk patchelf \
-        python3-pip rpm tk-dev uuid-dev
+        python3-pip rpm tk-dev uuid-dev zstd
 fi
 
 # get check_mk sources
 if [ ! -f check-mk-raw-${CHECKMK_VERSION}.cre.tar.gz ]; then
-    wget -q https://download.checkmk.com/checkmk/${CHECKMK_VERSION}/check-mk-raw-${CHECKMK_VERSION}.cre.tar.gz
+    wget https://download.checkmk.com/checkmk/${CHECKMK_VERSION}/check-mk-raw-${CHECKMK_VERSION}.cre.tar.gz
+fi
+# get check_mk for windows artifact extraction
+if [ ! -f check-mk-cloud-${CHECKMK_VERSION}_0.kinetic_amd64.deb ]; then
+    wget https://download.checkmk.com/checkmk/${CHECKMK_VERSION}/check-mk-cloud-${CHECKMK_VERSION}_0.kinetic_amd64.deb
 fi
 rm -rf check-mk-raw-${CHECKMK_VERSION}.cre
 tar xfz check-mk-raw-${CHECKMK_VERSION}.cre.tar.gz
@@ -45,7 +49,6 @@ cd check-mk-raw-${CHECKMK_VERSION}.cre
 # apply patches
 patch -p0 < ../create_build_environment_variables-allow-empty-pathhash.patch
 patch -p0 < ../defines.make-use-official-python-mirror.patch
-patch -p0 < ../fake-windows-artifacts-fix-path.patch
 patch -p0 < ../heirloom-mailx-fix-source-url.patch
 patch -p0 < ../Makefile-reduce-webpack-memory-consumption.patch
 patch -p0 < ../omd-Makefile-remove-module-navicli.patch
@@ -58,8 +61,11 @@ patch -p0 < ../pipfile-remove-pymssql.patch
 patch -p0 < ../werkv2-remove-markdown-imports.patch
 patch -p0 < ../xmlsec1-fix-source-url.patch
 
-# skip build of windows artifacts
-bash scripts/fake-windows-artifacts
+# prepare windows artifacts
+ar x ../check-mk-cloud-${CHECKMK_VERSION}_0.kinetic_amd64.deb
+tar -I zstd -xf data.tar.zst
+rm -rf agents/windows
+mv opt/omd/versions/${CHECKMK_VERSION}.cce/share/check_mk/agents/windows agents/
 
 # prepare snap7
 tar xvzf omd/packages/snap7/snap7-${SNAP7_VERSION}.tar.gz -C omd/packages/snap7
