@@ -211,12 +211,13 @@ The following sections show how to download and install the DEB packages availab
     -playwright = "==1.30.0"  # used for in-browser testing
     diff -u Pipfile Pipfile_v2 > ../pipfile-remove-playwright.patch
 
-#### Remove pymssql from pipfile
+#### Update pymssql version in pipfile
 
     cp Pipfile Pipfile_v2
     vim Pipfile_v2
     -pymssql = "==2.2.7"  # needed by check_sql active check
-    diff -u Pipfile Pipfile_v2 > ../pipfile-remove-pymssql.patch
+    +pymssql = "==2.2.8"  # needed by check_sql active check
+    diff -u Pipfile Pipfile_v2 > ../pipfile-update-pymssql.patch
 
 #### Remove werkv2 markdown imports
 

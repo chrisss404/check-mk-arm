@@ -57,7 +57,7 @@ patch -p0 < ../python-make-set-arm-architecture.patch
 patch -p0 < ../protobuf-make-add-latomic.patch
 patch -p0 < ../pipfile-remove-pbr.patch
 patch -p0 < ../pipfile-remove-playwright.patch
-patch -p0 < ../pipfile-remove-pymssql.patch
+patch -p0 < ../pipfile-update-pymssql.patch
 patch -p0 < ../werkv2-remove-markdown-imports.patch
 patch -p0 < ../xmlsec1-fix-source-url.patch
 
