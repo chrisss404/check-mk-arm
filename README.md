@@ -166,6 +166,14 @@ The following sections show how to download and install the DEB packages availab
     +.ran-webpack: export NODE_OPTIONS := --max-old-space-size=2048
     diff -u Makefile Makefile_v2 > ../Makefile-reduce-webpack-memory-consumption.patch
 
+#### Replace npm clean install with install
+
+    cp Makefile Makefile_v2
+    vim Makefile_v2
+    -        npm ci --yes --audit=false --unsafe-perm $$REGISTRY
+    +        npm install
+    diff -u Makefile Makefile_v2 > ../Makefile-replace-npm-clean-install-with-install.patch
+
 #### Remove module navicli
 
     cp omd/Makefile omd/Makefile_v2
@@ -227,15 +235,6 @@ The following sections show how to download and install the DEB packages availab
     -pymssql = "==2.2.7"  # needed by check_sql active check
     +pymssql = "==2.2.8"  # needed by check_sql active check
     diff -u Pipfile Pipfile_v2 > ../pipfile-update-pymssql.patch
-
-#### Remove werkv2 markdown imports
-
-    cp cmk/utils/werks/werkv2.py cmk/utils/werks/werkv2.py_v2
-    vim cmk/utils/werks/werkv2.py_v2
-    -import markdown
-    -from markdown.extensions import Extension
-    -from markdown.treeprocessors import Treeprocessor
-    diff -u cmk/utils/werks/werkv2.py cmk/utils/werks/werkv2.py_v2 > ../werkv2-remove-markdown-imports.patch
 
 #### Fix xmlsec1 source url
 

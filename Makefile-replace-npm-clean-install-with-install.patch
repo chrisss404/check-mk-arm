@@ -1,0 +1,10 @@
+--- Makefile    2023-08-08 00:15:19.000000000 +0100
++++ Makefile_v2 2023-08-27 19:59:35.833218651 +0100
+@@ -287,7 +287,7 @@
+            REGISTRY= ; \
+            echo "Installing from public registry" ; \
+         fi ; \
+-       npm ci --yes --audit=false --unsafe-perm $$REGISTRY
++       npm install
+        sed -i 's#"resolved": "https://artifacts.lan.tribe29.com/repository/npm-proxy/#"resolved": "https://registry.npmjs.org/#g' package-lock.json
+        touch node_modules/.bin/webpack node_modules/.bin/redoc-cli node_modules/.bin/prettier

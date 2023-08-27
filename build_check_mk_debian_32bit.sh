@@ -51,6 +51,7 @@ patch -p0 < ../create_build_environment_variables-allow-empty-pathhash.patch
 patch -p0 < ../defines.make-use-official-python-mirror.patch
 patch -p0 < ../heirloom-mailx-fix-source-url.patch
 patch -p0 < ../Makefile-reduce-webpack-memory-consumption.patch
+patch -p0 < ../Makefile-replace-npm-clean-install-with-install.patch
 patch -p0 < ../omd-Makefile-remove-module-navicli.patch
 patch -p0 < ../python-make-add-fno-semantic-interposition.patch
 patch -p0 < ../python-make-set-arm-architecture.patch
@@ -58,7 +59,6 @@ patch -p0 < ../protobuf-make-add-latomic.patch
 patch -p0 < ../pipfile-remove-pbr.patch
 patch -p0 < ../pipfile-remove-playwright.patch
 patch -p0 < ../pipfile-update-pymssql.patch
-patch -p0 < ../werkv2-remove-markdown-imports.patch
 patch -p0 < ../xmlsec1-fix-source-url.patch
 
 # prepare windows artifacts
@@ -76,7 +76,6 @@ ln -s arm_v7-linux omd/packages/snap7/snap7-${SNAP7_VERSION}/build/bin/armv7l-li
 tar czf omd/packages/snap7/snap7-${SNAP7_VERSION}.tar.gz -C omd/packages/snap7 snap7-${SNAP7_VERSION}
 
 # setup pipenv
-rm Pipfile.lock
 bash buildscripts/infrastructure/build-nodes/scripts/install-pipenv.sh
 
 # compile and package
