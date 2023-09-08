@@ -50,8 +50,8 @@ cd check-mk-raw-${CHECKMK_VERSION}.cre
 patch -p0 < ../create_build_environment_variables-allow-empty-pathhash.patch
 patch -p0 < ../defines.make-use-official-python-mirror.patch
 patch -p0 < ../heirloom-mailx-fix-source-url.patch
+patch -p0 < ../Makefile-adapt-ran-npm-target.patch
 patch -p0 < ../Makefile-reduce-webpack-memory-consumption.patch
-patch -p0 < ../Makefile-replace-npm-clean-install-with-install.patch
 patch -p0 < ../omd-Makefile-remove-module-navicli.patch
 patch -p0 < ../python-make-add-fno-semantic-interposition.patch
 patch -p0 < ../python-make-set-arm-architecture.patch

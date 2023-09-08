@@ -159,20 +159,22 @@ The following sections show how to download and install the DEB packages availab
     +            "http://archive.ubuntu.com/ubuntu/pool/universe/h/heirloom-mailx/heirloom-mailx_" + HEIRLOOMMAILX_VERSION + ".orig.tar.gz",
     diff -u omd/packages/heirloom-mailx/heirloom-mailx_http.bzl omd/packages/heirloom-mailx/heirloom-mailx_http.bzl_v2 > ../heirloom-mailx-fix-source-url.patch
 
+#### Adapt makefile target ran-npm
+
+    cp Makefile Makefile_v2
+    vim Makefile_v2
+    -        npm --version | grep "^$(NPM_VERSION)\." >/dev/null 2>&1
+    -        node --version | grep "^v$(NODEJS_VERSION)\." >/dev/null 2>&1
+    -        npm ci --yes --audit=false --unsafe-perm $$REGISTRY
+    +        npm install
+    diff -u Makefile Makefile_v2 > ../Makefile-adapt-ran-npm-target.patch
+
 #### Reduce webpack memory consumption
 
     cp Makefile Makefile_v2
     vim Makefile_v2
     +.ran-webpack: export NODE_OPTIONS := --max-old-space-size=2048
     diff -u Makefile Makefile_v2 > ../Makefile-reduce-webpack-memory-consumption.patch
-
-#### Replace npm clean install with install
-
-    cp Makefile Makefile_v2
-    vim Makefile_v2
-    -        npm ci --yes --audit=false --unsafe-perm $$REGISTRY
-    +        npm install
-    diff -u Makefile Makefile_v2 > ../Makefile-replace-npm-clean-install-with-install.patch
 
 #### Remove module navicli
 
