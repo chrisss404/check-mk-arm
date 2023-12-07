@@ -96,9 +96,9 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Ubuntu (64-bit)
 
-* Checkmk 2.2.0 for Ubuntu 22.04 Jammy: [2.2.0p12](https://github.com/chrisss404/check-mk-arm/releases/tag/2.2.0p16)
+* Checkmk 2.2.0 for Ubuntu 22.04 Jammy: [2.2.0p16](https://github.com/chrisss404/check-mk-arm/releases/tag/2.2.0p16)
 * Checkmk 2.1.0 for Ubuntu 22.04 Jammy: [2.1.0p28](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p28)
-* Checkmk 2.2.0 for Ubuntu 20.04 Focal: [2.2.0p12](https://github.com/chrisss404/check-mk-arm/releases/tag/2.2.0p16)
+* Checkmk 2.2.0 for Ubuntu 20.04 Focal: [2.2.0p16](https://github.com/chrisss404/check-mk-arm/releases/tag/2.2.0p16)
 * Checkmk 2.1.0 for Ubuntu 20.04 Focal: [2.1.0p28](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p28)
 
 * Checkmk 2.0.0 for Ubuntu 21.10 Impish: [2.0.0p25](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p25)
@@ -107,9 +107,9 @@ The following sections show how to download and install the DEB packages availab
 
 ##### Debian (64-bit)
 
-* Checkmk 2.2.0 for Debian Bookworm: [2.2.0p12](https://github.com/chrisss404/check-mk-arm/releases/tag/2.2.0p16)
+* Checkmk 2.2.0 for Debian Bookworm: [2.2.0p16](https://github.com/chrisss404/check-mk-arm/releases/tag/2.2.0p16)
   
-* Checkmk 2.2.0 for Debian Bullseye: [2.2.0p12](https://github.com/chrisss404/check-mk-arm/releases/tag/2.2.0p16)
+* Checkmk 2.2.0 for Debian Bullseye: [2.2.0p16](https://github.com/chrisss404/check-mk-arm/releases/tag/2.2.0p16)
 * Checkmk 2.1.0 for Debian Bullseye: [2.1.0p28](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p28)
 
 ### Build Checkmk from sources
