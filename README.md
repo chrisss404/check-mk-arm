@@ -1,5 +1,5 @@
 
-## Updates will be discontinued very soon
+## Updates discontinued
 
 Great news, there is an official commitment to add native ARM support for RPi 5 (ARMv8.2-A): [Checkmk – our road to ARM support](https://checkmk.com/blog/checkmk-our-road-arm-support).
 While you wait for this announcement to become true, you can continue to vote for the feature request: https://features.checkmk.com/suggestions/297317/arm-support-for-the-cee-and-cme.
@@ -7,25 +7,7 @@ While you wait for this announcement to become true, you can continue to vote fo
 Unfortunately, due to native ARM support on the horizon we have decided to retire this project (thank you [@martux69](https://github.com/martux69) for all your hard work supporting arm64 over all the years). 
 This decision was based on the fact that keeping up with upstream changes has recently become increasingly time-consuming, additionally other (personal) things have become more important, so that there is no longer enough time.
 
-If anyone would like to take over the project, please reach out.
-
-## ARM builds of Checkmk
-
-On the [release](https://github.com/chrisss404/check-mk-arm/releases) page you can find deb packages targeting the following systems:
-
-* [Raspberry Pi OS (32-bit)](https://www.raspberrypi.org/downloads/raspberry-pi-os/) (formerly Raspbian) "Bullseye" (2.2.0 will be the last supported major version)
- 
-* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Jammy" (2.2.0p22 will be the last supported version)
-* [Ubuntu (64-bit)](https://ubuntu.com/download/raspberry-pi/) "Focal" (2.2.0p22 will be the last supported version)
-
-* [Debian (64-bit)](https://raspi.debian.net/tested/) "Bullseye" (2.2.0p22 will be the last supported version)
-* [Debian (64-bit)](https://raspi.debian.net/tested/) "Bookworm" (2.2.0p22 will be the last supported version)
-
-##### The builds for Focal, Bullseye and Bookworm arm64 are untested !
-
-If your system is listed you can follow the instructions from section [Install Checkmk to your device](#install-checkmk-to-your-device), otherwise please refer to section [Build Checkmk from sources](#build-checkmk-from-sources) to compile a package for your system.
-
-The sources of Checkmk can be found here: https://github.com/tribe29/checkmk
+If anyone would like to take over, please reach out.
 
 ![Checkmk](https://raw.github.com/chrisss404/check-mk-arm/master/data/check_mk.png)
 
@@ -53,71 +35,6 @@ Go to `Setup` > `General` > `Global settings` > `Site Management` and reduce the
 
 In case of issues accessing the Checkmk web interface, check the pre-defined iptables rules, see: https://blog.meinside.dev/When-Oracle-Clouds-Ubuntu-Instance-Doesnt-Accept-Connections-to-Ports-Other-than-22/
 
-### Install Checkmk to your device
-
-The following sections show how to download and install the DEB packages available from this repo. After the installation you can follow the [official user guide](https://docs.checkmk.com/latest/en/) to set it up and start your monitoring journey.
-
-##### Raspberry Pi OS (32-bit) Bullseye
-
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.2.0p9 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_armhf.deb) 
-    dpkg -i check-mk-raw-*.bullseye_armhf.deb
-    apt-get update && apt-get install -f
-
-##### Ubuntu (64-bit) Jammy
-
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.2.0p22 | grep browser_download_url | cut -d '"' -f 4 | grep jammy_arm64.deb) 
-    dpkg -i check-mk-raw-*.jammy_arm64.deb
-    apt-get update && apt-get install -f
-    
-##### Ubuntu (64-bit) Focal
-
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.2.0p22 | grep browser_download_url | cut -d '"' -f 4 | grep focal_arm64.deb) 
-    dpkg -i check-mk-raw-*.focal_arm64.deb
-    apt-get update && apt-get install -f
-
-##### Debian (64-bit) Bookworm
-
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.2.0p22 | grep browser_download_url | cut -d '"' -f 4 | grep bookworm_arm64.deb) 
-    dpkg -i check-mk-raw-*.bookworm_arm64.deb
-    apt-get update && apt-get install -f
-
-##### Debian (64-bit) Bullseye
-
-    curl -LO $(curl -s https://api.github.com/repos/chrisss404/check-mk-arm/releases/tags/2.2.0p22 | grep browser_download_url | cut -d '"' -f 4 | grep bullseye_arm64.deb) 
-    dpkg -i check-mk-raw-*.bullseye_arm64.deb
-    apt-get update && apt-get install -f
-
-### Package overview
-
-##### Raspberry Pi OS (32-bit)
-
-* Checkmk 2.2.0 for Raspberry Pi OS Bullseye: [2.2.0p9](https://github.com/chrisss404/check-mk-arm/releases/tag/2.2.0p9)
-* Checkmk 2.1.0 for Raspberry Pi OS Bullseye: [2.1.0p28](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p28)
-* Checkmk 2.0.0 for Raspberry Pi OS Bullseye: [2.0.0p25](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p25)
-* Checkmk 2.0.0 for Raspberry Pi OS Buster: [2.0.0p17](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p17)
-* Checkmk 1.6.0 for Raspberry Pi OS Buster: [1.6.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.6.0p22)
-* Checkmk 1.5.0 for Raspberry Pi OS Buster: [1.5.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p22)
-* Checkmk 1.5.0 for Raspberry Pi OS Stretch: [1.5.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/1.5.0p20)
-* Checkmk 1.4.0 for Raspberry Pi OS Stretch: [1.4.0p35](https://github.com/chrisss404/check-mk-arm/releases/tag/1.4.0p35)
-
-##### Ubuntu (64-bit)
-
-* Checkmk 2.2.0 for Ubuntu 22.04 Jammy: [2.2.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/2.2.0p22)
-* Checkmk 2.1.0 for Ubuntu 22.04 Jammy: [2.1.0p28](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p28)
-* Checkmk 2.2.0 for Ubuntu 20.04 Focal: [2.2.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/2.2.0p22)
-* Checkmk 2.1.0 for Ubuntu 20.04 Focal: [2.1.0p28](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p28)
-
-* Checkmk 2.0.0 for Ubuntu 21.10 Impish: [2.0.0p25](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p25)
-* Checkmk 2.0.0 for Ubuntu 21.04 Hirsute: [2.0.0p20](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p20)
-* Checkmk 2.0.0 for Ubuntu 20.10 Groovy: [2.0.0p16](https://github.com/chrisss404/check-mk-arm/releases/tag/2.0.0p16)
-
-##### Debian (64-bit)
-
-* Checkmk 2.2.0 for Debian Bookworm: [2.2.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/2.2.0p22)
-  
-* Checkmk 2.2.0 for Debian Bullseye: [2.2.0p22](https://github.com/chrisss404/check-mk-arm/releases/tag/2.2.0p22)
-* Checkmk 2.1.0 for Debian Bullseye: [2.1.0p28](https://github.com/chrisss404/check-mk-arm/releases/tag/2.1.0p28)
-
 ### Build Checkmk from sources
 
     # build a specific version of Checkmk targeting Debian 32-bit, e.g.: 2.2.0p1
@@ -125,6 +42,13 @@ The following sections show how to download and install the DEB packages availab
 
     # build a specific version of Checkmk targeting Ubuntu 64-bit, e.g.: 2.1.0p21
     INSTALL_DEPENDENCIES=1 bash build_check_mk_ubuntu_64bit.sh <version>
+
+### Install Checkmk to your device
+
+Build or get a deb package that targets your system and install it as shown below, then follow the [official user guide](https://docs.checkmk.com/latest/en/) to set everything up.
+
+    dpkg -i check-mk-raw-*.deb
+    apt-get update && apt-get install -f
 
 ### Patches
 
