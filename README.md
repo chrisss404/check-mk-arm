@@ -6,7 +6,9 @@ This could mean, that at some point the Raspberry Pi 5 and subsequent models cou
 In the meantime, you can continue to vote for the feature request: https://features.checkmk.com/suggestions/297317/arm-support-for-the-cee-and-cme.
 
 Unfortunately, due to native ARM support on the horizon we have decided to retire this project (thank you [@martux69](https://github.com/martux69) for all your hard work supporting arm64 over all the years). 
-This decision was based on the fact that keeping up with upstream changes has recently become increasingly time-consuming, additionally other (personal) things have become more important, so that there is no longer enough time.
+This decision was based on the fact that keeping up with upstream changes has recently become increasingly time-consuming, additionally other (personal) things have become more important, so that there is no longer enough time. 
+
+### There is, however, a fork of the project being maintained on a "best effort" basis at https://github.com/FloTheSysadmin/check-mk-arm. 
 
 If anyone would like to take over, please reach out.
 
