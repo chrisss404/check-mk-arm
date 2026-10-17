@@ -9,3 +9,5 @@ Unfortunately, due to native ARM support on the horizon we have decided to retir
 This decision was based on the fact that keeping up with upstream changes has recently become increasingly time-consuming, additionally other (personal) things have become more important, so that there is no longer enough time.
 
 There is a fork of the project that is being maintained on a "best effort" basis: https://github.com/FloTheSysadmin/check-mk-arm.
+
+Packages for current Checkmk versions (2.3, 2.4 and 2.5; arm64; Debian 12/13 and Ubuntu 24.04) are available here: https://github.com/sergiodadi/check-mk-raspberry.
